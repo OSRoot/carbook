@@ -1,0 +1,94 @@
+<ion-content>
+  <div class="container ion-padding-start ion-padding-end">
+    <h3 class="font-bold-16 text-dark">إعلاناتي</h3>
+    <!-- Search and Filter Area -->
+    <div class="search-filter">
+      <div class="search">
+        <ion-icon class="search-icon" slot="start" name="search-sharp"></ion-icon>
+        <input class="search-input" type="text" placeholder="البحث عن سيارة">
+      </div>
+      <div id="open-modal" class="filter">
+        <ion-button fill="clear" shape="round">{{filterBy||'الترتيب'}}</ion-button>
+      </div>
+    </div>
+
+    <!-- End of Search and filter Area -->
+
+
+    <!-- ########################################################################################## -->
+    <!-- ########################################################################################## -->
+    <ion-modal #modal1 trigger="open-modal" [initialBreakpoint]="1" [breakpoints]="[0.3,0.5,0.7, 1]">
+      <ng-template>
+        <div class="block">
+          <ion-toolbar>
+            <ion-title class="font-bold-14 text-dark">اختر نوع الترتيب</ion-title>
+          </ion-toolbar>
+          <ion-radio-group (ionChange)="setFilter($event)">
+            <ion-list>
+              <ion-item lines="">
+                <ion-radio class="text-dark font-semibold-12" value="حسب التاريخ">حسب التاريخ</ion-radio><br />
+              </ion-item>
+              <ion-item lines="">
+                <ion-radio class="text-dark font-semibold-12" value="حسب السعر">حسب السعر</ion-radio><br />
+              </ion-item>
+              <ion-item lines="">
+                <ion-radio class="text-dark font-semibold-12" value="حسب الجودة">حسب الجودة</ion-radio><br />
+              </ion-item>
+            </ion-list>
+          </ion-radio-group>
+          <ion-button class="height-40px font-semibold-16" expand="block" mode="ios"
+            (click)="modal1.dismiss()">موافق</ion-button>
+        </div>
+      </ng-template>
+    </ion-modal>
+    <!-- ########################################################################################## -->
+    <!-- ########################################################################################## -->
+
+    <!-- Ads Container starts here -->
+    <div class="ads-container m16-top">
+      <div class="ad-box" *ngFor="let item of myAds; let i = index">
+        <div class="image">
+          <img [src]="null||'../../assets/images/mercedes.jpg'" alt="">
+        </div>
+        <div class="details">
+          <div class="ion-padding top-det">
+            <div>
+              <h3 class="ion-no-margin font-semibold-14 text-dark">{{item.carType}}</h3>
+              <h3 class="ion-no-margin font-bold-14 text-dark">{{ item.price | number: '1.0-2' }} د.ع</h3>
+            </div>
+            <h4 class="ion-no-margin font-regular-9 text-light">15 أبريل 2020</h4>
+          </div>
+          <div class="bottom-det">
+            <div>
+              <img src="../../assets/images/avio.png" alt="">
+              <h4 class="ion-no-margin font-regular-12 m8-top p-start-8">{{item.tyraz}}</h4>
+            </div>
+          </div>
+          <!-- Floating Icon -->
+
+          <!-- Options List Hiddent till being activated -->
+        </div>
+        <div class="options">
+          <ion-list>
+            <ion-item lines="none">
+              <ion-icon (click)="deleteItem(item._id)" color="danger" name="trash"></ion-icon>
+            </ion-item>
+
+            <ion-item lines="none">
+              <ion-icon color="primary" name="create"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>
+<!-- Fixed Footer -->
+<ion-footer class="ion-text-center">
+  <ion-toolbar>
+
+    <ion-button (click)="navigate('/step1', 'forward')"><span>+</span> اضف اعلانك مجاناً </ion-button>
+
+  </ion-toolbar>
+</ion-footer>

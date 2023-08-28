@@ -1,0 +1,108 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="ion-no-padding font-bold-16 text-dark">حساب جديد</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="navigate('/welcome','back')">
+        <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+  <div class="container">
+    <!-- Logo Part -->
+    <div class="upper-part m100-auto">
+      <img src="../../../../assets/images/logo1.svg" alt="">
+      <h3 class="font-bold-23 text-primary">كاربوك</h3>
+    </div>
+
+
+    <!-- Form Register -->
+
+    <div class="form ion-padding">
+      <!-- 1st -->
+      <form [formGroup]="userForm">
+        <div>
+          <h3 class="text-dark font-bold-14 m16-bottom" position="">الاسم كامل</h3>
+          <ion-item lines="none">
+            <input [(ngModel)]="fullname" formControlName="fullname"
+              class="font-regular-12 text-dark h44 no-border no-outline w100" type="text"
+              placeholder="ادخل الاسم كامل" />
+          </ion-item>
+        </div>
+        <!-- End -->
+        <!-- 2nd -->
+        <div class="phone-input-area">
+          <h3 class="text-dark font-bold-14 m16-bottom m16-top" position="">الهاتف</h3>
+          <ion-item lines="none">
+            <input [(ngModel)]="phone" formControlName="phone"
+              class="font-regular-12 text-dark h44 no-border no-outline w100" type="number" placeholder="ادخل الهاتف" />
+          </ion-item>
+          <div class="code-area">
+            <p>+964</p>
+            <img src="../../../../assets/images/Flag_of_Iraq.png" alt="">
+          </div>
+        </div>
+
+        <!-- End -->
+        <!-- 3rd -->
+        <div class="work-type">
+          <h3 class="text-dark font-bold-14 m16-bottom m16-top" position="">نوع العمل</h3>
+          <div class="options">
+            <div *ngFor="let item of workType; let i =index"
+              class="animate__animated animate__fadeIn text-light font-regular-14 option"
+              [class.active-work]="clickedIndex === i" (click)="clickedIndex = i ; selectedWork=item">
+              {{item}}
+            </div>
+          </div>
+        </div>
+        <!-- End -->
+        <!-- 4th -->
+
+        <div class="pass-input">
+          <h3 class="text-dark font-bold-14 m16-bottom m16-top" position="">كلمة السر</h3>
+          <ion-item lines="none">
+            <input [(ngModel)]="password" formControlName="password"
+              class="font-regular-12 text-dark h44 no-border no-outline w100"
+              type="{{ showPassword ? 'text' : 'password' }}" placeholder="ادخل كلمة السر" />
+          </ion-item>
+          <div class="eye-icon">
+            <ion-icon slot="end" [name]="showPassword ? 'eye-off' : 'eye'" (click)="toggleShowPassword()"></ion-icon>
+          </div>
+        </div>
+        <!-- End -->
+        <!-- 5th -->
+
+        <div class="pass-input">
+          <h3 class="text-dark font-bold-14 m16-bottom m16-top" position="">تأكيد كلمة السر</h3>
+          <ion-item lines="none">
+            <input [(ngModel)]="confirmPassword" formControlName="confirmPass"
+              class="font-regular-12 text-dark h44 no-border no-outline w100"
+              type="{{ showPassword ? 'text' : 'password' }}" placeholder="تأكيد كلمة السر" />
+          </ion-item>
+          <div class="eye-icon">
+            <ion-icon slot="end" [name]="showPassword ? 'eye-off' : 'eye'" (click)="toggleShowPassword()"></ion-icon>
+          </div>
+        </div>
+        <!-- End -->
+      </form>
+    </div>
+
+    <div class="register">
+      <ion-item>
+        <ion-button class="font-bold-16" (click)="login()" shape="round">الدخول لحسابي</ion-button>
+      </ion-item>
+    </div>
+  </div>
+</ion-content>
+<!-- Fixed Footer -->
+<ion-footer class="ion-text-center">
+  <ion-toolbar>
+
+    <ion-button [disabled]="userForm.invalid" (click)="signUp()" class="font-bold-16">حفظ</ion-button>
+
+  </ion-toolbar>
+</ion-footer>

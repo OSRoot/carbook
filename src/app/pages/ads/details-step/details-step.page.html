@@ -1,0 +1,294 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="ion-no-padding font-bold-16">إضافة إعلان</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="navigate('/step1', 'back')">
+        <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-progress-bar [value]="0.70"></ion-progress-bar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <!-- Start of Ad Form -->
+    <div class="flex-start padding-top-24  ad-form">
+
+      <div class="field">
+        <ion-label class="font-bold-14 text-dark">نوع السيارة</ion-label>
+        <div id="open-modal-type" class="bg-white type-modal">
+          <ion-text *ngIf="!carType.length " class="text-light font-regular-12 padding-start-16">ادخل نوع
+            السيارة</ion-text>
+          <ion-text *ngIf="carType.length" class="text-dark font-regular-12 padding-start-16">{{carType}}</ion-text>
+        </div>
+      </div>
+      <!-- ################################################################################################# -->
+      <!-- ################################################################################################# -->
+
+      <ion-modal #modal6 trigger="open-modal-type" [initialBreakpoint]="1" [breakpoints]="[0.3,0.5,0.7, 1]">
+        <ng-template>
+          <div class="block">
+            <ion-toolbar>
+              <ion-title class="font-bold-14 text-dark">اختر نوع السيارة</ion-title>
+            </ion-toolbar>
+            <ion-radio-group (ionChange)="setCarType($event)">
+              <ion-list>
+                <ion-item lines="">
+                  <ion-radio class="text-dark font-semibold-12" value="ميرسيدس 1">ميرسيدس 1</ion-radio><br />
+                </ion-item>
+                <ion-item lines="">
+                  <ion-radio class="text-dark font-semibold-12" value="فراري 2">فراري 2</ion-radio><br />
+                </ion-item>
+                <ion-item lines="">
+                  <ion-radio class="text-dark font-semibold-12" value="بي ام دبليو 3">بي ام دبليو 3</ion-radio><br />
+                </ion-item>
+                <ion-item lines="">
+                  <ion-radio class="text-dark font-semibold-12" value="فولفو 4">فولفو 4</ion-radio><br />
+                </ion-item>
+              </ion-list>
+            </ion-radio-group>
+            <ion-button class="height-40px font-semibold-16" expand="block" mode="ios"
+              (click)="modal6.dismiss()">موافق</ion-button>
+          </div>
+        </ng-template>
+      </ion-modal>
+
+      <!-- ################################################################################################# -->
+      <!-- ################################################################################################# -->
+      <div class="field">
+        <ion-label class="font-bold-14 text-dark">الطراز</ion-label>
+        <div id="open-modal-tyraz" class="bg-white type-modal ps-rel">
+          <ion-text *ngIf="!carTyraz.length" class="text-light font-regular-12 padding-start-16">اختر الطراز</ion-text>
+          <ion-text *ngIf="carTyraz.length" class="text-dark font-regular-12 padding-start-16">{{carTyraz}}</ion-text>
+          <ion-icon name="ellipsis-horizontal-sharp"></ion-icon>
+        </div>
+      </div>
+      <!-- ################################################################################################# -->
+      <!-- ################################################################################################# -->
+
+      <ion-modal #modal5 trigger="open-modal-tyraz" [initialBreakpoint]="1" [breakpoints]="[0.3,0.5,0.7, 1]">
+        <ng-template>
+          <div class="block">
+            <ion-toolbar>
+              <ion-title class="font-bold-14 text-dark">اختر الطراز</ion-title>
+            </ion-toolbar>
+            <ion-radio-group (ionChange)="setTyraz($event)">
+              <ion-list>
+                <ion-item lines="">
+                  <ion-radio class="text-dark font-semibold-12" value="طراز 1">طراز 1</ion-radio><br />
+                </ion-item>
+                <ion-item lines="">
+                  <ion-radio class="text-dark font-semibold-12" value="طراز 2">طراز 2</ion-radio><br />
+                </ion-item>
+                <ion-item lines="">
+                  <ion-radio class="text-dark font-semibold-12" value="طراز 3">طراز 3</ion-radio><br />
+                </ion-item>
+                <ion-item lines="">
+                  <ion-radio class="text-dark font-semibold-12" value="طراز 4">طراز 4</ion-radio><br />
+                </ion-item>
+              </ion-list>
+            </ion-radio-group>
+            <ion-button class="height-40px font-semibold-16" expand="block" mode="ios"
+              (click)="modal5.dismiss()">موافق</ion-button>
+          </div>
+        </ng-template>
+      </ion-modal>
+
+      <!-- ################################################################################################# -->
+      <!-- ################################################################################################# -->
+      <div class="field">
+        <ion-label class="font-bold-14 text-dark">الموديل</ion-label>
+        <div id="open-modal-model" class="bg-white type-modal">
+          <ion-text *ngIf="!carModel.length" class="text-light font-regular-12 padding-start-16">نوع الموديل</ion-text>
+          <ion-text *ngIf="carModel.length" class="text-dark font-regular-12 padding-start-16">{{carModel}}</ion-text>
+        </div>
+      </div>
+      <!-- ################################################################################################# -->
+      <!-- ################################################################################################# -->
+
+      <ion-modal #modal4 trigger="open-modal-model" [initialBreakpoint]="1" [breakpoints]="[0.3,0.5,0.7, 1]">
+        <ng-template>
+          <div class="block">
+            <ion-toolbar>
+              <ion-title class="font-bold-14 text-dark">اختر الموديل</ion-title>
+            </ion-toolbar>
+            <ion-radio-group (ionChange)="setCarModel($event)">
+              <ion-list>
+                <ion-item lines="">
+                  <ion-radio color="danger" class="text-dark font-semibold-12" value="2015">2015</ion-radio><br />
+                </ion-item>
+                <ion-item lines="">
+                  <ion-radio color="success" class="text-dark font-semibold-12" value="2017">2017</ion-radio><br />
+                </ion-item>
+                <ion-item lines="">
+                  <ion-radio color="warning" class="text-dark font-semibold-12" value="2010">2010</ion-radio><br />
+                </ion-item>
+                <ion-item lines="">
+                  <ion-radio color="primary" class="text-dark font-semibold-12" value="2023">2023</ion-radio><br />
+                </ion-item>
+              </ion-list>
+            </ion-radio-group>
+            <ion-button class="height-40px font-semibold-16" expand="block" mode="ios"
+              (click)="modal4.dismiss()">موافق</ion-button>
+          </div>
+        </ng-template>
+      </ion-modal>
+
+
+      <!-- ################################################################################################# -->
+      <!-- ################################################################################################# -->
+
+      <div class="field">
+        <ion-label class="font-bold-14 text-dark">اللون</ion-label>
+        <div id="open-modal-color" class="bg-white type-modal ps-rel">
+          <ion-text *ngIf="!carColor.length" class="text-light font-regular-12 padding-start-16">اختر اللون</ion-text>
+          <ion-text *ngIf="carColor.length" class="text-dark font-regular-12 padding-start-16">{{carColor}}</ion-text>
+          <ion-icon name="ellipsis-horizontal-sharp"></ion-icon>
+        </div>
+      </div>
+      <!-- ################################################################################################# -->
+      <!-- ################################################################################################# -->
+
+      <ion-modal #modal2 trigger="open-modal-color" [initialBreakpoint]="1" [breakpoints]="[0.3,0.5,0.7, 1]">
+        <ng-template>
+          <div class="block">
+            <ion-toolbar>
+              <ion-title class="font-bold-14 text-dark">اختر اللون</ion-title>
+            </ion-toolbar>
+            <ion-radio-group (ionChange)="setColor($event)">
+              <ion-list>
+                <ion-item lines="">
+                  <ion-radio color="danger" class="text-dark font-semibold-12" value="أحمر">أحمر</ion-radio><br />
+                </ion-item>
+                <ion-item lines="">
+                  <ion-radio color="success" class="text-dark font-semibold-12" value="أخضر">أخضر</ion-radio><br />
+                </ion-item>
+                <ion-item lines="">
+                  <ion-radio color="warning" class="text-dark font-semibold-12" value="أصفر">أصفر</ion-radio><br />
+                </ion-item>
+                <ion-item lines="">
+                  <ion-radio color="primary" class="text-dark font-semibold-12" value="أزرق">أزرق</ion-radio><br />
+                </ion-item>
+              </ion-list>
+            </ion-radio-group>
+            <ion-button class="height-40px font-semibold-16" expand="block" mode="ios"
+              (click)="modal2.dismiss()">موافق</ion-button>
+          </div>
+        </ng-template>
+      </ion-modal>
+
+      <!-- ################################################################################################# -->
+      <!-- ################################################################################################# -->
+      <div class="field">
+        <ion-label class="font-bold-14 text-dark">نوع الاستيراد</ion-label>
+        <div id="open-modal-import" class="bg-white type-modal">
+          <ion-text *ngIf="!carImportType.length" class="text-light font-regular-12 padding-start-16">ادخل نوع
+            الاستيراد</ion-text>
+          <ion-text *ngIf="carImportType.length"
+            class="text-dark font-regular-12 padding-start-16">{{carImportType}}</ion-text>
+        </div>
+      </div>
+      <!-- ################################################################################################# -->
+      <!-- ################################################################################################# -->
+
+      <ion-modal #modal1 trigger="open-modal-import" [initialBreakpoint]="1" [breakpoints]="[0.3,0.5,0.7, 1]">
+        <ng-template>
+          <div class="block">
+            <ion-toolbar>
+              <ion-title class="font-bold-14 text-dark">نوع الإستيراد</ion-title>
+            </ion-toolbar>
+            <ion-radio-group (ionChange)="setImportType($event)">
+              <ion-list>
+                <ion-item lines="">
+                  <ion-radio class="text-dark font-semibold-12" value="مستعمل">مستعمل</ion-radio><br />
+                </ion-item>
+                <ion-item lines="">
+                  <ion-radio class="text-dark font-semibold-12" value="جديد">جديد</ion-radio><br />
+                </ion-item>
+              </ion-list>
+            </ion-radio-group>
+            <ion-button class="height-40px font-semibold-16" expand="block" mode="ios"
+              (click)="modal1.dismiss()">موافق</ion-button>
+          </div>
+        </ng-template>
+      </ion-modal>
+
+      <!-- ################################################################################################# -->
+      <!-- ################################################################################################# -->
+
+      <div class="field">
+        <ion-label class="font-bold-14 text-dark">نوع الترقيم</ion-label>
+        <div id="open-modal-tarqeem" class="bg-white type-modal ps-rel">
+          <ion-text *ngIf="!carTarqueem.length" class="text-light font-regular-12 padding-start-16">ادخل نوع
+            الترقيم</ion-text>
+          <ion-text *ngIf="carTarqueem.length"
+            class="text-dark font-regular-12 padding-start-16">{{carTarqueem}}</ion-text>
+          <ion-icon name="ellipsis-horizontal-sharp"></ion-icon>
+        </div>
+      </div>
+      <!-- ################################################################################################# -->
+      <!-- ################################################################################################# -->
+
+      <ion-modal #modal3 trigger="open-modal-tarqeem" [initialBreakpoint]="1" [breakpoints]="[0.4,0.5,0.7, 1]">
+        <ng-template>
+          <div class="block">
+            <ion-toolbar>
+              <ion-title class="font-bold-14 text-dark">اختر نوع الترقيم</ion-title>
+            </ion-toolbar>
+            <ion-radio-group (ionChange)="setTarqeem($event)">
+              <ion-list>
+                <ion-item lines="">
+                  <ion-radio class="text-dark font-semibold-12" value="غاز">غاز</ion-radio><br />
+                </ion-item>
+                <ion-item lines="">
+                  <ion-radio class="text-dark font-semibold-12" value="كهرباء">كهرباء</ion-radio><br />
+                </ion-item>
+                <ion-item lines="">
+                  <ion-radio class="text-dark font-semibold-12" value="عداد">عداد</ion-radio><br />
+                </ion-item>
+                <ion-item lines="">
+                  <ion-radio class="text-dark font-semibold-12" value="بنزين">بنزين</ion-radio><br />
+                </ion-item>
+              </ion-list>
+            </ion-radio-group>
+            <ion-button class="height-40px font-semibold-16" expand="block" mode="ios"
+              (click)="modal3.dismiss()">موافق</ion-button>
+          </div>
+        </ng-template>
+      </ion-modal>
+
+      <!-- ################################################################################################# -->
+      <!-- ################################################################################################# -->
+    </div>
+    <!-- End of Ad Form -->
+    <!-- Start of other features -->
+    <div class="other-features-container">
+      <h3 class="no-margin font-bold-14 padding-start-16 padding-top-16">مواصفات أخرى</h3>
+      <div class="features">
+        <div class="feature flex-sb padding-top-16">
+          <ion-text class="font-semibold-12 text-dark padding-start-16 ">فتحة سقف</ion-text>
+          <div class="flex-sb options padding-end-16">
+            <div class="option font-regular-12">نعم</div>
+            <div class="option font-regular-12 active-option">لا</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</ion-content>
+<ion-footer style="padding-top: 12px;" class="">
+  <div class="footer-btns">
+    <div (click)="setData()" class="next-btn">
+      <ion-text class="font-bold-16">التالي</ion-text>
+    </div>
+    <div (click)="navigate('/step1', 'back')" class="prev-btn">
+      <ion-text class="font-bold-16">السابق</ion-text>
+    </div>
+  </div>
+</ion-footer>
+
+<!-- >التالي< -->
+<!-- >السابق< -->

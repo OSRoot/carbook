@@ -1,0 +1,21 @@
+<ion-content class="">
+
+
+  <div class="animate__animated animate__fadeIn container ">
+    <!-- Change this later -->
+    <div class="ion-padding content">
+      <img class="logo" src="../../assets/images/logo1.svg" alt="">
+      <div class="text">
+        <h4 class="font-bold-16 text-dark text-center no-margin">المتابعه</h4>
+        <h3 class="font-bold-16 text-dark">يجب تسجيل الدخول بالتطبيق</h3>
+      </div>
+      <ion-button class="font-semibold-16" mode="ios" expand="block"
+        (click)="navigate('/login', 'forward')">التسجيل</ion-button>
+      <ion-button class="font-semibold-16" mode="ios" expand="block" fill="outline"
+        (click)="navigate('/signup', 'forward')">حساب جديد</ion-button>
+      <ion-button class="guet-btn font-semibold-16 ion-margin-bottom" shape="round"
+        (click)="navigate('/tabs/home', 'forward')">تصفح كزائر</ion-button>
+    </div>
+  </div>
+
+</ion-content>

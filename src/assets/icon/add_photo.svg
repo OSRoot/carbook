@@ -1,0 +1,7 @@
+<svg id="add_photo" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <path id="Path_6065" data-name="Path 6065" d="M0,0H48V48H0Z" fill="none"/>
+  <circle id="Ellipse_7" data-name="Ellipse 7" cx="6" cy="6" r="6" transform="translate(18 20)" fill="none" stroke="#878f9b" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <path id="Path_6066" data-name="Path 6066" d="M7,10h4a4,4,0,0,0,4-4,2,2,0,0,1,2-2h4M39,18V32a4,4,0,0,1-4,4H7a4,4,0,0,1-4-4V14a4,4,0,0,1,4-4" transform="translate(3 4)" fill="none" stroke="#878f9b" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <line id="Line_22" data-name="Line 22" x2="12" transform="translate(30 12)" fill="none" stroke="#878f9b" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <line id="Line_23" data-name="Line 23" y2="12" transform="translate(36 6)" fill="none" stroke="#878f9b" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+</svg>

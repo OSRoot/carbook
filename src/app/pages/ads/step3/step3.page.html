@@ -1,0 +1,55 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="ion-no-padding font-bold-16">إضافة إعلان</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="navigate('/details-step', 'back')">
+        <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-progress-bar [value]="progress"></ion-progress-bar>
+</ion-header>
+
+
+<ion-content>
+  <!-- Form Register -->
+
+  <div class="form ion-padding">
+    <form [formGroup]="form">
+
+      <!-- 2nd -->
+      <div class="phone-input-area">
+        <h3 class="text-dark font-bold-14 m16-bottom m16-top" position="">الهاتف</h3>
+        <ion-item lines="none">
+          <input [(ngModel)]="phoneNumber" formControlName="phone"
+            class="font-regular-12 text-dark h44 no-border no-outline w100" type="number" placeholder="ادخل الهاتف" />
+        </ion-item>
+        <div class="code-area">
+          <p>+964</p>
+          <img src="../../../../assets/images/Flag_of_Iraq.png" alt="">
+        </div>
+      </div>
+      <!-- End -->
+      <div class="pass-input">
+        <h3 class="text-dark font-bold-14 m16-bottom m16-top" position="">السعر</h3>
+        <ion-item lines="none">
+          <input [(ngModel)]="price" formControlName="price"
+            class="font-regular-12 text-dark h44 no-border no-outline w100" type="number" placeholder="ادخل السعر" />
+        </ion-item>
+
+      </div>
+      <!-- End -->
+
+    </form>
+
+  </div>
+
+</ion-content>
+<!-- Fixed Footer -->
+<ion-footer class="ion-text-center">
+  <ion-toolbar>
+
+    <ion-button (click)="postAd()" class="font-bold-16">نشر الاعلان</ion-button>
+
+  </ion-toolbar>
+</ion-footer>

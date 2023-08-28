@@ -1,0 +1,51 @@
+<ion-content>
+  <div class="container ion-padding-start ion-padding-end">
+    <h3>رغباتي</h3>
+
+    <!-- Start of the Wishes box -->
+    <!-- Ads Container starts here -->
+    <div class="ads-container m16-top">
+      <div class="ad-box">
+
+        <div class="details">
+          <div class="ion-padding top-det">
+            <div>
+              <h3 class="ion-no-margin font-semibold-14 text-dark">سيارة مرسيدس</h3>
+              <h3 class="ion-no-margin font-bold-14 text-dark">{{ 200000| number: '1.0-2' }} د.ع</h3>
+            </div>
+            <h4 class="ion-no-margin font-regular-9 text-light">15 أبريل 2020</h4>
+          </div>
+          <div class="bottom-det">
+            <div>
+              <img src="../../assets/images/avio.png" alt="">
+              <h4 class="ion-no-margin font-regular-12 m8-top p-start-8">أفيو</h4>
+            </div>
+          </div>
+          <!-- Floating Icon -->
+          <ion-icon (click)="showOptions=!showOptions ; showClose=!showClose" name="ellipsis-vertical"></ion-icon>
+          <ion-icon *ngIf="showClose" (click)="showOptions=!showOptions ; showClose=!showClose" name="close"></ion-icon>
+          <!-- Options List Hiddent till being activated -->
+        </div>
+        <div *ngIf="showOptions" class="options">
+          <ion-list>
+            <ion-item lines="none">
+              <ion-icon color="danger" name="trash"></ion-icon>
+            </ion-item>
+
+            <ion-item lines="none">
+              <ion-icon color="primary" name="create"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>
+<!-- Fixed Footer -->
+<ion-footer class="ion-text-center">
+  <ion-toolbar>
+    <ion-button (click)="navigate('/add-wish', 'forward')">إضافة رغبة جديدة</ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,586 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import '@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+@import 'animate.css';
+
+
+@font-face {
+    font-family: "bold";
+    src: url("./assets/fonts/Bahij_TheSansArabic-Bold.ttf");
+}
+
+@font-face {
+    font-family: "extraBold";
+    src: url("./assets/fonts/Bahij_TheSansArabic-ExtraBold.ttf");
+}
+
+@font-face {
+    font-family: "extraLight";
+    src: url("./assets/fonts/Bahij_TheSansArabic-ExtraLight.ttf");
+}
+
+@font-face {
+    font-family: "light";
+    src: url("./assets/fonts/Bahij_TheSansArabic-Light.ttf");
+}
+
+@font-face {
+    font-family: "semiBold";
+    src: url("./assets/fonts/Bahij_TheSansArabic-SemiBold.ttf");
+}
+
+@font-face {
+    font-family: "semiLight";
+    src: url("./assets/fonts/Bahij_TheSansArabic-SemiLight.ttf");
+}
+
+@font-face {
+    font-family: "regular";
+    src: url("./assets/fonts/Bahij_TheSansArabic-Plain.ttf");
+}
+
+*,
+body {
+    direction: rtl;
+
+}
+
+.fast {
+    animation-duration: 0.5s;
+}
+
+// .local-container {
+//     display: flex;
+//     height: 100%;
+//     width: 100%;
+//     margin: auto;
+//     justify-content: center;
+//     justify-content: center;
+// }
+// ################################################################################
+// ################# IONIC ELEMENTS
+// ################################################################################
+
+ion-content {
+    --background: var(--light-background);
+}
+
+
+// .light-btn {
+//     --background: var(--white-background);
+//     --box-shadow: none;
+//     // --border: none;
+//     box-shadow: 0 0px 15px 4px var(--shadow);
+//     color: var(--light-text);
+// }
+
+ion-footer {
+    height: 85px;
+    background: #fff;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    ion-button {
+        span {
+            font-size: 24px;
+            // font-family: "s";
+            margin-inline-end: 10px;
+        }
+
+        font-size: 14px;
+        font-family: "semiBold";
+        height: 50px;
+        width: 343px;
+        // margin: auto !important;
+        margin-top: 16px;
+        --background: none;
+        --box-shadow: none;
+        --border: none;
+        border-radius: 8px;
+        background: var(--ion-color-primary);
+    }
+}
+
+ion-button {
+    --box-shadow: none;
+    --border: none;
+}
+
+ion-tabs {
+    max-width: 768px;
+
+}
+
+ion-modal {
+    direction: rtl !important;
+}
+
+ion-label {
+    --color: var(--ion-color-primary);
+}
+
+// ################################################################################
+// ################# IONIC ELEMENTS END
+// ################################################################################
+
+
+
+// ################################################################################
+// ################# GLOBAL HTML AND CSS STYLING
+// ################################################################################
+.previous-btn {
+    --background: transparent !important;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.container {
+    max-width: 768px;
+    margin: auto !important;
+}
+
+
+// FONT FAMILY CLASSES
+// regular
+.font-regular {
+    font-family: "regular";
+}
+
+.font-regular-12 {
+    font-family: "regular";
+    font-size: 12px;
+
+}
+
+
+.font-regular-16 {
+    font-family: "regular";
+    font-size: 16px;
+}
+
+.font-regular-14 {
+    font-family: "regular";
+    font-size: 14px;
+}
+
+.font-regular-9 {
+    font-family: "regular";
+    font-size: 9px;
+}
+
+// semiLight
+.font-semiLight {
+    font-family: "semiLight";
+}
+
+.font-semiLight-16 {
+    font-family: "semiLight";
+    font-size: 16px;
+}
+
+.font-semiLight-14 {
+    font-family: "semiLight";
+    font-size: 14px;
+}
+
+.font-semiLight-9 {
+    font-family: "semiLight";
+    font-size: 9px;
+}
+
+// light
+
+.font-light {
+    font-family: "light";
+}
+
+.font-light-16 {
+    font-family: "light";
+    font-size: 16px;
+}
+
+.font-light-14 {
+    font-family: "light";
+    font-size: 14px;
+}
+
+.font-light-9 {
+    font-family: "light";
+    font-size: 9px;
+}
+
+
+// extraLight
+
+.font-extraLight {
+    font-family: "extraLight";
+}
+
+.font-extraLight-16 {
+    font-family: "extraLight";
+    font-size: 16px;
+}
+
+.font-extraLight-14 {
+    font-family: "extraLight";
+    font-size: 14px;
+}
+
+.font-extraLight-9 {
+    font-family: "extraLight";
+    font-size: 9px;
+}
+
+
+// Bold
+.font-bold {
+    font-family: "bold";
+}
+
+.font-bold-16 {
+    font-family: "bold";
+    font-size: 16px;
+}
+
+.font-extrabold-16 {
+    font-family: "extraBold";
+    font-size: 16px;
+}
+
+.font-bold-23 {
+    font-family: "bold";
+    font-size: 23px;
+}
+
+.font-bold-14 {
+    font-family: "bold";
+    font-size: 14px;
+}
+
+.font-bold-9 {
+    font-family: "bold";
+    font-size: 9px;
+
+}
+
+// Semi BOld
+.font-semibold-16 {
+    font-family: "semiBold";
+    font-size: 16px;
+
+}
+
+
+.font-semibold-14 {
+    font-family: "semiBold";
+    font-size: 14px;
+
+}
+
+.font-semibold-12 {
+    font-family: "semiBold";
+    font-size: 12px;
+
+}
+
+.font-semibold-9 {
+    font-family: "semiBold";
+    font-size: 9px;
+}
+
+// extraBold
+.font-extrabold-9 {
+    font-family: "extraBold";
+    font-size: 9px;
+}
+
+.font-extrabold-16 {
+    font-family: "extraBold";
+    font-size: 16px;
+}
+
+.font-extrabold-14 {
+    font-family: "extraBold";
+    font-size: 14px;
+}
+
+// Text Colors
+.text-primary {
+    color: var(--ion-color-primary);
+}
+
+.text-dark {
+    color: var(--dark-text)
+}
+
+.text-light {
+    color: var(--light-text)
+}
+
+// flex
+
+
+
+
+.flex-sb {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-dir-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-start {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+}
+
+// padding
+
+.padding-top-16 {
+    padding-top: 16px !important;
+}
+
+.padding-top-24 {
+    padding-top: 24px !important;
+}
+
+
+.padding-bottom-16 {
+    padding-bottom: 16px !important;
+}
+
+.padding-left-16 {
+    padding-left: 16px !important;
+}
+
+.padding-start-16 {
+    padding-inline-start: 16px !important;
+}
+
+.p-start-8 {
+    padding-inline-start: 8px !important;
+}
+
+.padding-end-16 {
+    padding-inline-end: 16px !important;
+}
+
+.padding-right-16 {
+    padding-right: 16px !important;
+}
+
+// margin
+.no-margin {
+    margin: 0 !important;
+}
+
+.m16-top {
+    margin: 0;
+    margin-top: 16px !important;
+}
+
+.m8-top {
+    margin: 0;
+    margin-top: 8px !important;
+}
+
+.m10-top {
+    margin: 0;
+    margin-top: 10px !important;
+}
+
+.m16-bottom {
+    margin: 0;
+    margin-bottom: 16px;
+}
+
+.m16-start {
+    margin: 0;
+    margin-inline-start: 16px;
+}
+
+.m16-end {
+    margin: 0;
+    margin-inline-end: 16px;
+}
+
+
+.margin-top-16 {
+    margin-top: 16px !important;
+}
+
+.margin-top-24 {
+    margin-top: 24px !important;
+}
+
+
+.margin-bottom-16 {
+    margin-bottom: 16px !important;
+}
+
+.margin-left-16 {
+    margin-left: 16px !important;
+}
+
+.margin-right-16 {
+    margin-right: 16px !important;
+}
+
+
+// bg
+
+.bg-white {
+    background: var(--white-background) !important;
+}
+
+
+// border and outline
+
+
+.no-border {
+    border: none !important;
+    --border: none !important;
+}
+
+.no-outline {
+    outline: none !important;
+    --outline: none !important;
+}
+
+// HEIGHT 
+.height-40px {
+    height: 40px !important;
+    --height: 40px !important;
+}
+
+
+// Center
+
+.text-center {
+    text-align: center;
+}
+
+// Width and margin and height
+.w100 {
+    width: 100%;
+}
+
+.h44 {
+    height: 44px !important;
+}
+
+.w343 {
+    width: 343px !important;
+}
+
+.m100-auto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+
+// ########################################################
+.error-toast,
+.success-toast {
+    font-family: "semiBold";
+    --box-shadow: 0 0 4px 0 var(--box-shadow);
+    --background: white;
+    --color: var(--dark-text);
+    overflow: hidden;
+    border-radius: 3px;
+
+    &::part(container) {
+        border-radius: 3px;
+        padding: 0;
+        border-right: 10px solid#DC3545;
+        background: rgba(#DC3545, .1);
+    }
+
+    &::part(icon) {
+        color: #DC3545;
+        font-size: 1.9rem;
+    }
+
+    &::part(header) {
+        font-size: 16px;
+        font-family: 'semiBold';
+    }
+
+    &::part(button) {
+        color: #DC3545;
+    }
+}
+
+.success-toast {
+    &::part(container) {
+        border-right: 10px solid #4BB543;
+        background: rgba(#4BB543, .1);
+    }
+
+    &::part(icon) {
+        color: #4BB543;
+    }
+
+    &::part(button) {
+        color: #4BB543;
+    }
+}
+
+// ################ VIEWs
+
+.empty-view {
+    width: 100%;
+    height: calc(100vh - 200px);
+    display: flex;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+// Alert
+.alertStyle {
+    font-family: "bold";
+    font-size: 16px;
+}

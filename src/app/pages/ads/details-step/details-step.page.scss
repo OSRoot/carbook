@@ -1,0 +1,113 @@
+ion-title {
+    text-align: center;
+    padding-left: 56px;
+}
+
+.ad-form {
+
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    gap: 16px;
+    width: 343px;
+    margin: auto;
+
+    .field {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+
+        .type-modal {
+            // @media (max-width:800px) {
+            //     min-width: 360px;
+            // }
+
+            border-radius: 8px;
+            width: 343px;
+            height: 44px;
+
+            display: flex;
+            justify-content: start;
+            align-items: center;
+
+        }
+    }
+}
+
+.ps-rel {
+    position: relative;
+
+    ion-icon {
+        position: absolute;
+        left: 16px;
+    }
+}
+
+.options {
+
+    .option {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 24px;
+        border: 1px solid var(--border-dark);
+        border-radius: 12px;
+        background: var(--white-background);
+        margin-inline: 4px;
+    }
+
+
+}
+
+.active-option {
+    background: var(--ion-color-primary) !important;
+    color: var(--white-text)
+}
+
+ion-footer {
+
+
+    .footer-btns {
+        width: 343px;
+        margin: auto;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+        div {
+            height: 50px;
+            width: 164px;
+
+
+        }
+
+        .next-btn {
+            background: var(--ion-color-primary);
+            color: var(--white-text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+        }
+
+        .prev-btn {
+            background: var(--white-background);
+            color: var(--ion-color-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid var(--ion-color-primary);
+            border-radius: 8px;
+
+            &:active {
+                background: rgba(24, 122, 225, 10%);
+                // color: var(--white-text);
+            }
+        }
+    }
+}

@@ -1,0 +1,77 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="ion-no-padding font-bold-16 text-dark">تسجيل الدخول</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="navigate('/welcome','back')">
+        <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+  <div class="container">
+    <!-- Logo Part -->
+    <div class="upper-part m100-auto">
+      <img src="../../../../assets/images/logo1.svg" alt="">
+      <h3 class="font-bold-23 text-primary">كاربوك</h3>
+    </div>
+
+
+    <!-- Form Register -->
+
+    <div class="form ion-padding">
+      <form [formGroup]="loginForm">
+
+
+        <!-- 2nd -->
+        <div class="phone-input-area">
+          <h3 class="text-dark font-bold-14 m16-bottom m16-top" position="">الهاتف</h3>
+          <ion-item lines="none">
+            <input [(ngModel)]="userPhone" formControlName="phone"
+              class="font-regular-12 text-dark h44 no-border no-outline w100" type="number" placeholder="ادخل الهاتف" />
+          </ion-item>
+          <div class="code-area">
+            <p>+964</p>
+            <img src="../../../../assets/images/Flag_of_Iraq.png" alt="">
+          </div>
+        </div>
+
+        <!-- End -->
+        <!-- 3rd -->
+
+        <!-- 4th -->
+
+        <div class="pass-input">
+          <h3 class="text-dark font-bold-14 m16-bottom m16-top" position="">كلمة السر</h3>
+          <ion-item lines="none">
+            <input (keyup.enter)="login()" [(ngModel)]="userPassword" formControlName="password"
+              class="font-regular-12 text-dark h44 no-border no-outline w100"
+              type="{{ showPassword ? 'text' : 'password' }}" placeholder="ادخل كلمة السر" />
+          </ion-item>
+          <div class="eye-icon">
+            <ion-icon slot="end" [name]="showPassword ? 'eye-off' : 'eye'" (click)="toggleShowPassword()"></ion-icon>
+          </div>
+        </div>
+        <!-- End -->
+      </form>
+
+    </div>
+    <div class="register">
+      <ion-item>
+        <ion-button class="font-bold-16" (click)="register()" shape="round">حساب جديد</ion-button>
+      </ion-item>
+    </div>
+
+  </div>
+</ion-content>
+<!-- Fixed Footer -->
+<ion-footer class="ion-text-center">
+  <ion-toolbar>
+
+    <ion-button [disabled]="loginForm.invalid" (click)="login()" class="font-bold-16">دخول</ion-button>
+    <!-- 9642511199500 -->
+  </ion-toolbar>
+</ion-footer>

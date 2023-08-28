@@ -1,0 +1,89 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-no-padding font-bold-16">مرسيدس 2023</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="navigate('/tabs/my-ads', 'root')">
+        <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+  <!-- Swiper Section -->
+  <div class="container">
+
+    <div class="images-swiper ion-padding">
+      <swiper-container [pagination]="true" [zoom]="true" [slidesPerView]="1">
+        <swiper-slide>
+          <div class="swiper-zoom-container">
+            <img src="../../assets/images/mercedes.jpg" alt="">
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="swiper-zoom-container">
+            <img src="../../assets/images/mercedes.jpg" alt="">
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="swiper-zoom-container">
+            <img src="../../assets/images/mercedes.jpg" alt="">
+          </div>
+        </swiper-slide>
+      </swiper-container>
+    </div>
+
+    <!-- Details section -->
+    <h3 class="ion-no-margin ion-padding text-dark font-bold-16">شيفروليه ( 2011 )</h3>
+    <h3 class="ion-no-margin ion-padding-start text-dark font-extrabold-16">{{90000 | number:'1.0-2'}} د.ع</h3>
+
+    <!-- Details Card -->
+    <div class="detail-card">
+
+      <div class="ion-margin items">
+        <div class="ion-padding item">
+          <h3 class="ion-no-margin font-semibold-14 text-dark">نوع السيارة</h3>
+          <h3 class="ion-no-margin font-semibold-14 text-dark">شيفروليه</h3>
+        </div>
+        <div class="ion-padding item">
+          <h3 class="ion-no-margin font-semibold-14 text-dark">الموديل</h3>
+          <h3 class="ion-no-margin font-semibold-14 text-dark">لانوس</h3>
+        </div>
+        <div class="ion-padding item">
+          <h3 class="ion-no-margin font-semibold-14 text-dark">الطراز</h3>
+          <h3 class="ion-no-margin font-semibold-14 text-dark">2011</h3>
+        </div>
+        <div class="ion-padding item">
+          <h3 class="ion-no-margin font-semibold-14 text-dark">اللون</h3>
+          <h3 class="ion-no-margin font-semibold-14 text-dark">رمادي</h3>
+        </div>
+        <div class="ion-padding item">
+          <h3 class="ion-no-margin font-semibold-14 text-dark">نوع الاستيراد</h3>
+          <h3 class="ion-no-margin font-semibold-14 text-dark">جديد</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class=" detail-adv">
+
+      <div class=" ion-padding-start right-side">
+        <h4 class="font-semibold-12 text-light">المعلن</h4>
+        <h3 class="font-bold-14 text-dark">أسامة السيد</h3>
+      </div>
+      <div class="ion-padding-end left-side">
+        <ion-button mode="ios" shape="round" color="primary">
+          <ion-icon name="call"></ion-icon>
+          اتصال
+        </ion-button>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

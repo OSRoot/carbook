@@ -1,0 +1,44 @@
+ion-content {
+    --background: url('../../assets/images/Welcome-light.png') center /cover;
+
+
+}
+
+
+.container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: flex-end;
+
+    .content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        .logo {
+            height: 50px;
+            width: 80px;
+            margin: auto;
+            margin-bottom: 24px;
+        }
+
+        h3 {
+            text-align: center;
+
+        }
+
+        ion-button {
+            height: 50px !important;
+        }
+
+        .guet-btn {
+            width: 50%;
+            margin: 15px auto 30px;
+
+            --background: rgba(24, 122, 225, 12%);
+            color: var(--ion-color-primary)
+        }
+    }
+}

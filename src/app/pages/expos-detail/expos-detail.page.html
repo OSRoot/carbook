@@ -1,0 +1,69 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="ion-no-padding font-bold-16">معرض العراق الدولي-فرع أربيل</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="navigate('/tabs/expos', 'back')">
+        <ion-icon color="primary" slot="icon-only" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class=" container">
+
+
+    <!-- Search and Filter Area -->
+    <div class="ion-margin-top search-filter">
+      <div class="search">
+        <ion-icon class="search-icon" slot="start" name="search-sharp"></ion-icon>
+        <input class="search-input" type="text" placeholder="البحث عن سيارة">
+      </div>
+      <div id="open-modal" class="filter">
+        <ion-button fill="clear" shape="round">{{filterBy||'الترتيب'}}</ion-button>
+      </div>
+    </div>
+
+    <!-- End of Search and filter Area -->
+
+
+    <!-- Ads Container starts here -->
+    <div class="ads-container m16-top">
+      <div class="ad-box">
+
+        <div class="details">
+          <div class="ion-padding top-det">
+            <div>
+              <h3 class="ion-no-margin font-semibold-14 text-dark">سيارة مرسيدس</h3>
+              <h3 class="ion-no-margin font-bold-14 text-dark">{{ 200000| number: '1.0-2' }} د.ع</h3>
+            </div>
+            <h4 class="ion-no-margin font-regular-9 text-light">15 أبريل 2020</h4>
+          </div>
+          <div class="bottom-det">
+            <div>
+              <img src="../../assets/images/avio.png" alt="">
+              <h4 class="ion-no-margin font-regular-12 m8-top p-start-8">أفيو</h4>
+            </div>
+          </div>
+          <!-- Floating Icon -->
+          <ion-icon (click)="showOptions=!showOptions ; showClose=!showClose" name="ellipsis-vertical"></ion-icon>
+          <ion-icon *ngIf="showClose" (click)="showOptions=!showOptions ; showClose=!showClose" name="close"></ion-icon>
+          <!-- Options List Hiddent till being activated -->
+        </div>
+        <div *ngIf="showOptions" class="options">
+          <ion-list>
+            <ion-item lines="none">
+              <ion-icon color="primary" name="call"></ion-icon>
+            </ion-item>
+
+            <ion-item lines="none">
+              <ion-icon color="warning" name="create"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

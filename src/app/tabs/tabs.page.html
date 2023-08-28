@@ -1,0 +1,51 @@
+<ion-tabs class="animate__animated animate__fadeIn fast ion-no-padding container">
+  <!--  -->
+  <ion-tab-bar class="ion-no-padding" mode="md" slot="top">
+    <ion-segment (ionChange)="NavigateBySegChange($event)" value="home">
+      <ion-segment-button (click)=" activateTab('home')" routerLink="/tabs/home" value="home">
+        <ion-tab-button mode="ios" tab="home">
+          <ion-img *ngIf="homeLightActive" src="../../assets/icon/homeLight.svg"></ion-img>
+          <ion-img *ngIf="homeDarkActive" src="../../assets/icon/homeDark.svg"></ion-img>
+        </ion-tab-button>
+      </ion-segment-button>
+
+      <ion-segment-button (click)="activateTab('expos')" routerLink="/tabs/expos" value="expos">
+        <ion-tab-button mode="ios" tab="expos">
+          <ion-img *ngIf="exposLightActive" src="../../assets/icon/expoLight.svg"></ion-img>
+          <ion-img *ngIf="exposDarkActive" src="../../assets/icon/expoDark.svg"></ion-img>
+        </ion-tab-button>
+      </ion-segment-button>
+
+      <ion-segment-button (click)="activateTab('my-ads')" routerLink="/tabs/my-ads" value="my-ads">
+        <ion-tab-button mode="ios" tab="my-ads">
+          <ion-img *ngIf="adLightActive" src="../../assets/icon/adLight.svg"></ion-img>
+          <ion-img *ngIf="adsDarkActive" src="../../assets/icon/adDark.svg"></ion-img>
+
+        </ion-tab-button>
+      </ion-segment-button>
+
+
+      <ion-segment-button (click)="activateTab('wishes')" routerLink="/tabs/wishes" value="wishes">
+        <ion-tab-button mode="ios" tab="wishes">
+          <ion-img *ngIf="wishesLightActive" src="../../assets/icon/wishLight.svg"></ion-img>
+          <ion-img *ngIf="wishesDarkActive" src="../../assets/icon/wishDark.svg"></ion-img>
+        </ion-tab-button>
+      </ion-segment-button>
+
+    </ion-segment>
+  </ion-tab-bar>
+
+  <!-- The Upper Part on the tabs -->
+  <ion-tab-bar slot="top">
+    <div class="upper-part">
+      <div class="logo">
+        <ion-text class="logo-text" color="primary">
+          <h3>كاربوك</h3>
+        </ion-text>
+      </div>
+      <div class="search">
+        <ion-icon name="search"></ion-icon>
+      </div>
+    </div>
+  </ion-tab-bar>
+</ion-tabs>

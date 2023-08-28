@@ -1,0 +1,136 @@
+.advertisers-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 13px;
+
+  .advertiser-box {
+
+    width: 100%;
+
+    ion-item {
+
+      --padding-top: 12px;
+
+      ion-thumbnail {
+        margin-inline-end: 10px;
+
+        ion-img {
+          border-radius: 50%;
+        }
+      }
+
+      .name {
+        ion-label {
+          font-size: 14px;
+          font-family: "semiBold";
+          color: var(--dark-text);
+        }
+
+        ion-text {
+          font-size: 10px;
+          font-family: "light";
+          color: var(--light-text);
+        }
+      }
+    }
+
+
+    .ad-container {
+      background: var(--white-background);
+      display: flex;
+      flex-direction: column;
+
+      .st-part {
+        padding: 0 16px;
+        padding-bottom: 8px;
+        display: flex;
+        justify-content: space-between;
+
+        h3 {
+          padding: 0;
+          margin: 0;
+          padding-top: 8px;
+          font-size: 14px;
+          color: var(--dark-text);
+        }
+
+        .title-price {
+          .title {
+            font-family: "semiBold";
+          }
+
+          .price {
+
+            font-family: "bold";
+          }
+        }
+
+        ion-text {
+          font-size: 12px;
+          font-family: "regular";
+          color: var(--light-text);
+        }
+      }
+
+      .nd-part {
+        height: 100%;
+        width: 100%;
+
+        .images-swiper {
+          swiper-container {
+            margin-bottom: -4px;
+          }
+
+          img {
+            object-fit: cover;
+            height: 300px;
+          }
+        }
+      }
+
+      .rd-part {
+        .call-save {
+          display: flex;
+          width: 100%;
+          margin-top: 5px;
+
+          ion-button {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            font-family: "semiBold";
+            width: 100%;
+            height: 100%;
+            height: 48px;
+          }
+
+          ion-img {
+            margin-inline-end: 7px;
+
+          }
+
+          .call {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            background: rgba(24, 122, 225, 7%);
+          }
+
+          .save {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+
+          }
+        }
+      }
+
+      // margin-bottom: 100px;
+    }
+  }
+
+}

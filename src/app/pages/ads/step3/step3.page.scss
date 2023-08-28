@@ -1,0 +1,35 @@
+ion-title {
+    text-align: center;
+    padding-left: 56px;
+}
+
+
+.phone-input-area {
+    position: relative;
+
+    // display: flex;
+    .code-area {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        left: 16px;
+        bottom: 0px;
+        z-index: 1000;
+        gap: 8px;
+        background: var(--white-background);
+        padding-inline-start: 4px;
+
+        img {
+            width: 33px;
+            height: 22px;
+            border-radius: 4px;
+        }
+    }
+}
+
+.form {
+    ion-item {
+        border-radius: 8px !important;
+    }
+}

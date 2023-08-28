@@ -1,0 +1,22 @@
+<!-- <ion-range aria-label="Dual Knobs Range" [dualKnobs]="true" [value]="{ lower: 20, upper: 80 }"></ion-range> -->
+
+<!-- <ion-range aria-label="Range with pin" [pin]="true" [pinFormatter]="pinFormatter"></ion-range> -->
+
+<!-- <ion-range aria-label="Range with ticks" [ticks]="true" [snaps]="true" [min]="0" [max]="10"></ion-range> -->
+
+<!-- <ion-range aria-label="Range with ionChange" (ionChange)="onIonChange($event)"></ion-range> -->
+<!-- <ion-item>
+  <ion-range id="dual-range" dual-knobs>
+  </ion-range>
+</ion-item> -->
+
+<ion-content>
+
+  <ion-list>
+    <ion-item *ngFor="let item of images; let i =index">
+      <ion-label>Picture</ion-label>
+      <img [src]="item.data" alt="">
+    </ion-item>
+  </ion-list>
+
+</ion-content>

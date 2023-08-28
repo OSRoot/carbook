@@ -1,0 +1,27 @@
+.hide-content {
+    visibility: hidden;
+}
+
+
+.loader {
+    background: var(--white-background);
+    height: 100vh;
+    display: flex;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    animation: fadeIn 0.3 ease-in-out infinite;
+}
+
+
+// For Fun
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

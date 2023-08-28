@@ -1,0 +1,11 @@
+<ion-app>
+
+  <!-- <div *ngIf="isLoaded" class="text-dark font-bold-16 loader">
+    <h1> loading ..
+    </h1>
+  </div> -->
+  <div [class.hide-content]="!isLoaded">
+    <ion-router-outlet></ion-router-outlet>
+  </div>
+
+</ion-app>

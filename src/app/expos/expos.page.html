@@ -1,0 +1,67 @@
+<ion-content>
+  <div class="container ion-padding-start ion-padding-end">
+    <h3>معارض السيارات</h3>
+    <!-- Search and Filter Area -->
+    <div class="search-filter">
+      <div class="search">
+        <ion-icon class="search-icon" slot="start" name="search-sharp"></ion-icon>
+        <input (keyup)="handleSearchInput($event)" class="search-input" type="text" placeholder="البحث عن معرض">
+      </div>
+      <div id="open-modal-filter1" class="filter">
+        <ion-button fill="clear" shape="round">{{filterBy||'الترتيب'}}</ion-button>
+      </div>
+      <!-- Filter Modal View -->
+      <!-- ########################################################################################## -->
+      <!-- ########################################################################################## -->
+      <ion-modal #modal1 trigger="open-modal-filter1" [initialBreakpoint]="1" [breakpoints]="[0.3,0.5,0.7, 1]">
+        <ng-template>
+          <div class="block">
+            <ion-toolbar>
+              <ion-title class="font-bold-14 text-dark">اختر نوع الترتيب</ion-title>
+            </ion-toolbar>
+            <ion-radio-group (ionChange)="setFilter($event)">
+              <ion-list>
+                <ion-item lines="">
+                  <ion-radio class="text-dark font-semibold-12" value="حسب التاريخ">حسب التاريخ</ion-radio><br />
+                </ion-item>
+                <ion-item lines="">
+                  <ion-radio class="text-dark font-semibold-12" value="حسب السعر">حسب السعر</ion-radio><br />
+                </ion-item>
+                <ion-item lines="">
+                  <ion-radio class="text-dark font-semibold-12" value="حسب الجودة">حسب الجودة</ion-radio><br />
+                </ion-item>
+              </ion-list>
+            </ion-radio-group>
+            <ion-button class="height-40px font-semibold-16" expand="block" mode="ios"
+              (click)="modal1.dismiss()">موافق</ion-button>
+          </div>
+        </ng-template>
+      </ion-modal>
+      <!-- ########################################################################################## -->
+      <!-- ########################################################################################## -->
+
+    </div>
+    <!-- End of Search and filter Area -->
+    <!-- Start of expos container -->
+    <div class="expos-container">
+      <div class="expo-box" *ngFor="let item of expos; let i = index">
+        <div class="details-thumbnail">
+          <div class="thumbnail">
+            <ion-thumbnail>
+              <ion-img style="border-radius: 50%;" src="../../assets/images/avio.png"></ion-img>
+            </ion-thumbnail>
+          </div>
+          <div class="details">
+            <h3>{{item.name}}</h3>
+            <h4> سيارة ({{item.carsCount}})</h4>
+          </div>
+        </div>
+        <div class="icon" (click)="navigate('/expos-detail', 'forward', item.id.toString())">
+          <ion-icon color="primary" name="arrow-back-outline"></ion-icon>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</ion-content>

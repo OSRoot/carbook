@@ -1,0 +1,66 @@
+* {
+    box-sizing: border-box;
+}
+
+ion-title {
+    text-align: center;
+    // padding-left: 56px;
+}
+
+.images-swiper {
+    height: 200px !important;
+
+    swiper-container {
+        height: 100%;
+    }
+}
+
+img {
+    object-fit: cover;
+}
+
+.detail-card {
+    width: 100% !important;
+}
+
+// ion-item {
+//     width: 100% !important;
+// }
+
+.items {
+    display: flex;
+    flex-direction: column;
+    background: var(--white-background);
+    border-radius: 8px;
+    box-shadow: 0 0 3px 2px var(--shadow);
+}
+
+.item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-light);
+
+}
+
+
+.detail-adv {
+    // width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: var(--white-background);
+    border-radius: 8px;
+    box-shadow: 0 0 3px 2px var(--shadow);
+    align-items: center;
+    margin-inline: 16px;
+
+    .right {
+        flex: 3;
+
+    }
+
+    .left {
+        flex: 1
+    }
+}

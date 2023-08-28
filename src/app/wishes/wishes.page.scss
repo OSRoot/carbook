@@ -1,0 +1,93 @@
+.container {
+    h3 {
+        font-family: "bold";
+        font-size: 16px;
+        color: var(--dark-text);
+    }
+
+
+
+}
+
+
+
+.ads-container {
+
+    .ad-box {
+        display: flex;
+        height: 112px;
+        background: var(--white-background);
+        border-radius: 8px;
+        box-shadow: 0 0px 3px 1px var(--shadow);
+
+        .image {
+            flex: 1;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+
+            img {
+
+                border-top-right-radius: 8px;
+                border-bottom-right-radius: 8px;
+
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .details {
+            position: relative;
+
+            ion-icon {
+                position: absolute;
+                left: 12px;
+                bottom: 20px;
+                padding: 16px;
+                background: var(--white-background);
+                box-shadow: 0 0px 3px 1px var(--shadow);
+                border-radius: 50%;
+
+                &:active {
+                    background: var(--bg-light);
+                }
+            }
+
+            flex: 2;
+
+            .top-det {
+                height: 72px;
+                display: flex;
+
+                div {
+                    flex: 2;
+                }
+            }
+
+            .bottom-det {
+                height: 40px;
+                background: var(--bg-light);
+                border-bottom-left-radius: 8px;
+                padding: 8px;
+
+                div {
+                    display: flex;
+
+                    img {
+                        height: 24px;
+                        width: 24px;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.options {
+    width: 60px;
+
+    ion-list {
+        border-radius: 8px;
+    }
+}
