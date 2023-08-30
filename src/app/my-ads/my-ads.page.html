@@ -1,4 +1,10 @@
 <ion-content>
+  
+  
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" >
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <div class="container ion-padding-start ion-padding-end">
     <h3 class="font-bold-16 text-dark">إعلاناتي</h3>
     <!-- Search and Filter Area -->
@@ -26,13 +32,13 @@
           <ion-radio-group (ionChange)="setFilter($event)">
             <ion-list>
               <ion-item lines="">
-                <ion-radio class="text-dark font-semibold-12" value="حسب التاريخ">حسب التاريخ</ion-radio><br />
+                <ion-radio class="text-dark font-semibold-12" value="date">حسب التاريخ</ion-radio><br />
               </ion-item>
               <ion-item lines="">
-                <ion-radio class="text-dark font-semibold-12" value="حسب السعر">حسب السعر</ion-radio><br />
+                <ion-radio class="text-dark font-semibold-12" value="price">حسب السعر</ion-radio><br />
               </ion-item>
               <ion-item lines="">
-                <ion-radio class="text-dark font-semibold-12" value="حسب الجودة">حسب الجودة</ion-radio><br />
+                <ion-radio class="text-dark font-semibold-12" value="color">حسب اللون</ion-radio><br />
               </ion-item>
             </ion-list>
           </ion-radio-group>

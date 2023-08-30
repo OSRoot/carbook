@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { Ad, User } from 'src/app/interfaces/interfaces';
+import { DataService } from 'src/app/services/data/data.service';
 import { FunctionsService } from 'src/app/services/functions/functions.service';
 
 @Component({
@@ -21,29 +22,14 @@ export class DetailsStepPage implements OnInit {
   advertiserId!: string;
   advertiserName!: string;
   constructor(
-    private funcService: FunctionsService,
-    private storage: Storage
-  ) {}
+    private funcService: FunctionsService
+    ,private dataService:DataService
+    ) {}
 
   ngOnInit() {}
 
   async ionViewWillEnter() {
-    await this.storage.get('user').then(
-      async (user) => {
-        console.log(user);
-        if (!user) {
-          await this.funcService.ShowSuccessToast('الدخول كزائر');
-          this.navigate('/welcome', 'root');
-          return;
-        }
-        this.funcService.ShowSuccessToast('إكمال بيانات الإعلان');
-        this.user = user;
-        this.advertiserName = user.fullname;
-      },
-      async (err) => {
-        console.log('err', err);
-      }
-    );
+    
   }
   // Basic Functions to set values from user
   navigate(page: string, dir: string, path?: string) {
@@ -82,7 +68,7 @@ export class DetailsStepPage implements OnInit {
       !this.carModel.length ||
       !this.carTarqueem.length
     ) {
-      this.funcService.ShowErrorToast('يجب ملء جميع البيانات للاستمرار');
+      this.funcService.presentToast('يجب ملء جميع البيانات للاستمرار');
       return;
     }
     const myAd: Ad = {
@@ -96,7 +82,7 @@ export class DetailsStepPage implements OnInit {
       advertiserId: this.advertiserId,
       advertiserName: this.advertiserName,
     };
-    await this.storage.set('myAd', myAd);
+    this.dataService.setBody=myAd;
     this.navigate('/step3', 'forward');
   }
 }

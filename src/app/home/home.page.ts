@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FunctionsService } from '../services/functions/functions.service';
-import { Storage } from '@ionic/storage-angular';
-import { Ad, User } from '../interfaces/interfaces';
+import {  User } from '../interfaces/interfaces';
 import { DataService } from '../services/data/data.service';
-import { AuthService } from '../services/auth/auth.service';
+import { forkJoin } from 'rxjs';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-home',
@@ -11,90 +11,87 @@ import { AuthService } from '../services/auth/auth.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  user: User = {};
-  AllAdds: Ad[] = [];
-  ads: Ad[] = [
-    {
-      advertiserName: 'Name Name',
-      carType: 'CarType',
-      color: 'Red',
-      counter: 0,
-      tarqeemType: 'Tarqueem',
-      tyraz: 'Tyraz',
-      model: '2000',
-      importType: 'New',
-    },
-  ];
+  // @ts-ignore
+  user: any = {};
+  loading:boolean=true;
+  loadingAds:boolean=true;
 
-  // #############################################################
+  errorView:boolean=false;
+  emptyView:boolean=false;
+  stopLoading:boolean=false;
+  ads:any[]=[];
+  newAds:any[]=[];
+  users:any[]=[]
+  location:{lat?:number; lng?:number}={lat:0,lng:0};
+
   // #############################################################
   constructor(
     private funcService: FunctionsService,
-    private storage: Storage,
     private dataService: DataService,
-    private authService: AuthService
+    private storage:Storage
+
   ) {}
   // #############################################################
   // #############################################################
-  async ngOnInit(): Promise<void> {
-    // this.getAllAds();
+  async ngOnInit() {
+    this.user =this.storage.get('user');
+    this.getAds();
   }
   // #############################################################
   // #############################################################
-  async ionViewWillEnter() {
-    const token = localStorage.getItem('accessToken');
-    if (!token) {
-      this.authService.removeCredentials();
-    }
-    await this.getAllAds();
-    await this.storage.get('user').then(
-      async (user) => {
-        console.log(user);
-        if (!user) {
-          await this.funcService.ShowSuccessToast('الدخول كزائر');
-          return;
-        }
-        this.funcService.ShowSuccessToast(`تم التسجيل ك ${user.fullname}`);
-        this.user = user;
-      },
-      async (err) => {
-        console.log('err', err);
-      }
-    );
-  }
-  // #############################################################
-  // #############################################################
+  getData(ev:any){
 
+  }
+  
+  // #############################################################
+  getAds(ev?:any){
+      forkJoin([
+      this.dataService.getData('/ads?status=1'),
+      this.dataService.getData('/users?status=1'),
+      ]).subscribe(
+        (res:any[])=>{
+          this.ads = res[0];
+          this.users=res[1];
+          this.ads.length ? this.showContentView(ev) : this.showEmptyView(ev); 
+        },
+      (_err)=>{
+          this.showErrorView(ev);
+      }
+    )
+  }
+  // #############################################################
   navigate(page: string, dir: string, path?: string) {
     this.funcService.navigate(page, dir, path);
   }
   // #############################################################
-  // #############################################################
-
-  // #############################################################
-  // #############################################################
-  // async loadData(ev: any) {
-  //   // document.location.reload();
-  //   setTimeout(async () => {
-  //     ev.target.complete();
-  //     this.funcService.dismissLoading();
-  //     this.funcService.ShowSuccessToast('لا توجد اعلانات بعد');
-  //   }, 2000);
-  //   await this.funcService.showLoading();
-  // }
-
-  // #############################################################
-  // #############################################################
-  async getAllAds() {
-    this.AllAdds = await this.storage.set('AllAds', []);
-    this.dataService.getData('/ads').subscribe(
-      async (res) => {
-        this.AllAdds = res;
-      },
-      async (err) => {
-        console.log(err);
-      }
-    );
+  doRefresh(ev:any){
+    this.loading = true;
+    this.loadingAds = true;
+    this.getAds(ev);
   }
   // #############################################################
+  showContentView(ev:any){
+    this.loading = false;
+    this.errorView = false;
+    this.emptyView = false;
+    if (ev) ev.target.complete();
+  }
+  // #############################################################
+  showErrorView(ev:any){
+    this.loading = false;
+    this.errorView = true;
+    this.emptyView = false;
+    if (ev) ev.target.complete();
+  }
+  // #############################################################
+  showEmptyView(ev:any){
+    this.loading = false;
+    this.errorView = false;
+    this.emptyView = true;
+    if (ev) ev.target.complete();
+  }
+  // #############################################################
+
+
 }
+

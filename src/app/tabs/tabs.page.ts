@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-tabs',
@@ -7,6 +8,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./tabs.page.scss'],
 })
 export class TabsPage implements OnInit {
+  user:any={}
   homeDarkActive = 0;
   homeLightActive = 1;
   adsDarkActive = 0;
@@ -15,7 +17,10 @@ export class TabsPage implements OnInit {
   wishesLightActive = 1;
   exposDarkActive = 0;
   exposLightActive = 1;
-  constructor(private navCtrl: NavController) {}
+  constructor(
+    private navCtrl: NavController,
+    private storage:Storage
+    ) {}
   // currentActiveTabValue!: string;
   ngOnInit() {
     this.navCtrl.navigateForward('/tabs/home');
@@ -26,6 +31,11 @@ export class TabsPage implements OnInit {
     console.log(`Current active tab value : ${tab}`);
     localStorage.setItem('activeTabValue', tab);
   }
+
+  async ionViewWillEnter() {
+    if (!this.user._id) await this.storage.get('user');
+  }
+
 
   activateTab(tab: string) {
     if (tab === 'home') {

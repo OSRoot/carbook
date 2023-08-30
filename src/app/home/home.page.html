@@ -1,33 +1,53 @@
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" >
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <div class="container">
+  
     <!-- Start of Advertisers Container -->
 
-    <div *ngIf="AllAdds.length" class="animated__animate animated__fadeIn ion-padding-top advertisers-container">
-      <div class="animated__animate animated__fadeIn advertiser-box" *ngFor="let item of AllAdds ;let i=index">
+    <div *ngIf="ads.length" class="animated__animate animated__fadeIn ion-padding-top advertisers-container">
+    
+<!-- #################################################################################################33 -->
+      <div class="animated__animate animated__fadeIn advertiser-box" *ngFor="let item of ads ;let i=index">
+        
         <ion-item (click)="navigate('/profile','forward')" lines="none">
           <div>
-            <ion-thumbnail>
+            <ion-thumbnail >
+              <ion-skeleton-text *ngIf="this.loading" animated style="border-radius: 50%;"></ion-skeleton-text>
               <ion-img src="../../assets/images/mercedes.jpg"></ion-img>
             </ion-thumbnail>
           </div>
-          <div class="name">
+          <div class="name" *ngIf="this.loading">
+            <ion-skeleton-text animated style="width:70px;height: 20px;"></ion-skeleton-text>
+          </div>
+          <div class="name" *ngIf="!this.loading">
             <ion-label>{{item.advertiserName}}</ion-label>
             <ion-text>المعلن</ion-text>
           </div>
         </ion-item>
         <div class="ad-container">
           <div class="st-part">
-            <div class="title-price">
+            <div class="title-price" *ngIf="this.loading">
+              <ion-skeleton-text animated style="width: 100px; height: 20px;"></ion-skeleton-text>
+              <ion-skeleton-text animated style="width: 70px; height: 15px;"></ion-skeleton-text>
+            </div>
+            <div *ngIf="!this.loading" class="title-price">
               <h3 class="title">{{item.carType}}</h3>
               <h3 class="price">{{item.price | number : '1.0-2' }} د.ع</h3>
             </div>
-            <ion-text>12 أبريل2020,</ion-text>
+            <ion-text *ngIf="this.loading"> 
+              <ion-skeleton-text animated style="width: 60px; height: 12px;"></ion-skeleton-text>
+            </ion-text>
+            <ion-text *ngIf="!this.loading">12 أبريل2020,</ion-text>
           </div>
           <div class="nd-part">
             <!-- Swiper Section -->
-            <div class="images-swiper">
+            <div class="image-swiper image-swiper-skl" *ngIf="this.loading">
+              <ion-skeleton-text animated style="height: 300px; width: 100%;"></ion-skeleton-text>
+            </div>
+            <div class="images-swiper" *ngIf="!this.loading">
               <swiper-container [pagination]="true" [zoom]="true" [slidesPerView]="1">
-
                 <swiper-slide>
                   <div class="swiper-zoom-container">
                     <img src="../../assets/images/mercedes.jpg" alt="">
@@ -59,12 +79,12 @@
         </div>
       </div>
     </div>
-    <div *ngIf="!AllAdds.length" class="prof">
+    <div *ngIf="!ads.length" class="prof">
       <ion-button (click)="navigate('/profile','forward')" expand="block" fill="clear" shape="round">
         Profile
       </ion-button>
     </div>
-    <div *ngIf="!AllAdds.length" class="font-bold-16 text-dark empty-view">
+    <div *ngIf="!ads.length" class="font-bold-16 text-dark empty-view">
       لا توجد إعلانات
     </div>
   </div>

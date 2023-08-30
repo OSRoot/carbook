@@ -11,23 +11,13 @@ import { DataService } from '../services/data/data.service';
 })
 export class MyAdsPage implements OnInit {
   filterBy!: string;
+  user:any={}
   showOptions = false;
   showClose = false;
-  ads: Ad[] = [
-    {
-      carType: 'ميرسيدس',
-      tyraz: 'ب دبليو',
-      tarqeemType: 'كهرباء',
-      model: '2023',
-      advertiserName: 'أسامة السيد',
-      color: 'أحمر',
-      counter: 2023,
-      importType: 'جديد',
-      price: 210000,
-      advertiserId: '',
-    },
-  ];
-
+  loading:boolean=true;
+  loadingAds:boolean=true;
+  errorView:boolean=false;
+  emptyView:boolean=false;
   myAds!: Ad[];
   constructor(
     private funcService: FunctionsService,
@@ -35,12 +25,9 @@ export class MyAdsPage implements OnInit {
     private dataService: DataService
   ) {}
   // ####################################################################
-  ngOnInit() {
-    // this.ads.push()
-  }
-  // ####################################################################
-  async ionViewWillEnter() {
+  async ngOnInit() {
     await this.getMyAds();
+    // this.ads.push()
   }
   // ####################################################################
   navigate(page: string, dir: string, path?: string) {
@@ -49,11 +36,11 @@ export class MyAdsPage implements OnInit {
   // ####################################################################
   setFilter(ev: any) {
     this.filterBy = ev.detail.value;
-    console.log(this.filterBy);
   }
   // ####################################################################
   async deleteItem(id: string | undefined) {
-    this.funcService.deleteAlert('هل انت متأكد؟', 'تأكيد').then(async (res) => {
+    this.funcService.confirmAlert({header:'تأكيد',message:'هل أنت متأكد من الحذف؟'})
+    .then(async (res) => {
       if (res === true) {
         this.dataService.deleteData('/ad/' + id).subscribe(
           async (res) => {
@@ -62,6 +49,7 @@ export class MyAdsPage implements OnInit {
           },
           (err) => {
             console.log(err);
+            return
           }
         );
       } else {
@@ -69,24 +57,48 @@ export class MyAdsPage implements OnInit {
       }
     });
   }
-
-  async getMyAds() {
+ // #############################################################
+doRefresh(ev:any){
+  this.loading = true;
+  this.loadingAds = true;
+  this.getMyAds(ev);
+}
+// #############################################################
+  async getMyAds(ev?:any) {
     this.myAds = await this.storage.set('myAds', []);
-    let myId = '';
-    await this.storage.get('user').then((res) => {
-      if (!res) {
-        return;
-      }
-      myId = res._id;
-    });
-    this.dataService.getData('/ad/' + myId).subscribe(
+    this.user = await this.dataService.getUser()    
+    this.dataService.getData('/ad/' + this.user._id).subscribe(
       async (res) => {
         console.log(res);
         this.myAds = res.ads;
+        this.myAds.length ? this.showContentView(ev) : this.showEmptyView(ev); 
       },
       async (err) => {
         console.log(err);
       }
     );
   }
+
+   // #############################################################
+  showContentView(ev:any){
+    this.loading = false;
+    this.errorView = false;
+    this.emptyView = false;
+    if (ev) ev.target.complete();
+  }
+  // #############################################################
+  showErrorView(ev:any){
+    this.loading = false;
+    this.errorView = true;
+    this.emptyView = false;
+    if (ev) ev.target.complete();
+  }
+  // #############################################################
+  showEmptyView(ev:any){
+    this.loading = false;
+    this.errorView = false;
+    this.emptyView = true;
+    if (ev) ev.target.complete();
+  }
+  // #############################################################
 }

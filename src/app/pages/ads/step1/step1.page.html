@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title class="ion-no-padding font-bold-16">إضافة إعلان</ion-title>
     <ion-buttons slot="start">
-      <ion-button (click)="navigate('/tabs/home', 'back')">
+      <ion-button (click)="navigate('/tabs/home', 'back');this.images=[]">
         <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -14,19 +14,28 @@
 
   <div class="container">
     <!-- Show when the selectedCars.length is not 0 -->
-    <div *ngIf="0" class="selected-pics">
+    <div *ngIf="this.images"  class="selected-pics">
       <div class="images">
-        <div class="image">
-          <div class="img"></div>
-          <h3>صورة #1</h3>
-
+        <div class="image" *ngFor="let item of this.images">
+          <div class="img-num">
+            <div class="img">
+              <img [src]="item.path" alt="">
+            </div>
+          </div>
+          <div class="img-icons">
+            <ion-buttons slot="end">
+              <ion-button color="danger" fill="clear">
+                <ion-icon color="danger" name="trash"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </div>
         </div>
         <div class="icons"></div>
       </div>
     </div>
     <!-- End of selected cars -->
     <!-- .select pic area -->
-    <div class="select-pic-outline" (click)="selectPic()">
+    <div id="open-modal-gallery" class="select-pic-outline">
       <div class="flex-dir-col">
         <img src="../../../../assets//icon/add_photo.svg" alt="">
         <ion-text>
@@ -34,6 +43,33 @@
         </ion-text>
       </div>
     </div>
+
+<!-- Show this modal  -->
+<ion-modal #modalImage mode="ios" trigger="open-modal-gallery" [initialBreakpoint]="0.2" [breakpoints]="[0.2]">
+  <ng-template>
+    <div >
+      <ion-toolbar class="ion-text-center">
+        <ion-title id="modal-title" class="font-bold-14 text-dark">اختر الصور التي تود رفعها</ion-title>
+      </ion-toolbar>
+      <ion-radio-group>
+        <ion-list>
+          <ion-item (click)="selectPic() ; modalImage.dismiss()"  lines="none">
+          <ion-label style="
+          font-family: semiBold; color: var(--dark-text)" >اختر من المعرض</ion-label>
+          <ion-icon name="image"></ion-icon>
+          </ion-item>
+          
+          <ion-item (click)="takePicture();modalImage.dismiss()" lines="none">
+            <ion-label style="font-family: semiBold; color: var(--dark-text)">التقاط صورة</ion-label>
+            <ion-icon name="camera"></ion-icon>
+            </ion-item>
+        </ion-list>
+      </ion-radio-group>
+    </div>
+  </ng-template>
+</ion-modal>
+
+
 
     <div class="select-pic-outline">
       <div class="flex-dir-col">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FunctionsService } from '../services/functions/functions.service';
 import { Storage } from '@ionic/storage-angular';
+import { DataService } from '../services/data/data.service';
 
 @Component({
   selector: 'app-welcome',
@@ -8,15 +9,20 @@ import { Storage } from '@ionic/storage-angular';
   styleUrls: ['./welcome.page.scss'],
 })
 export class WelcomePage implements OnInit {
+  user:any={}
   constructor(
     private funcService: FunctionsService,
-    private storage: Storage
+    private dataService:DataService
   ) {}
   ngOnInit() {
     setTimeout(async () => {
       await this.funcService.dismissLoading();
     }, 1000);
-    this.isAuthenticated();
+  }
+
+  async ionViewWillEnter() {
+    this.user = await this.dataService.getUser();
+    if (this.user?._id) this.funcService.navigate('/tabs/home', 'back');
   }
   // ############################################################
   // ############################################################
@@ -24,16 +30,4 @@ export class WelcomePage implements OnInit {
     this.funcService.navigate(page, dir, path);
   }
 
-  async isAuthenticated(): Promise<boolean> {
-    const accessToken = localStorage.getItem('accessToken');
-    if (accessToken) {
-      const authenticated = localStorage.getItem('authenticated');
-      if (authenticated) {
-        this.navigate('/tabs/home', 'root');
-        return true;
-      }
-    }
-
-    return false;
-  }
 }

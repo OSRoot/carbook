@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  AlertController,
-  LoadingController,
-  LoadingOptions,
-  NavController,
-  ToastController,
+import {AlertController, AlertOptions, LoadingController, LoadingOptions, NavController, ToastController,
 } from '@ionic/angular';
 
 @Injectable({
@@ -20,8 +15,6 @@ export class FunctionsService {
     private loadCtrl: LoadingController
   ) {}
 
-  // ########################################################################
-  // ################## SET NAV FUNCTIONS HERE ##############################
   navigate(page: string, dir: string, path?: string) {
     if (dir === 'back') {
       this.navCtrl.navigateBack(page);
@@ -39,79 +32,84 @@ export class FunctionsService {
     }
   }
 
-  // ########################################################################
-  // ################## SET TOASTER(:_) FUNCTIONS HERE ######################
-  //  You can make one function to present the toast, make a boolean paramerter
-  //  to check if the toast will be error or success using ternary conditional operator
-  //  e.g => header: error? "err":"success"
-  async ShowErrorToast(message: string, any?: any) {
-    let toast = await this.toastCtrl.create({
-      message: message || 'Error',
-      duration: 2000,
-      cssClass: 'error-toast',
-      position: 'top',
-    });
-    await toast.present();
-  }
 
-  async ShowSuccessToast(message: string, any?: any) {
-    let toast = await this.toastCtrl.create({
-      message: message || 'نجاح',
-      position: 'top',
-      duration: 2000,
-      cssClass: 'success-toast',
-    });
-    await toast.present();
+// Show Loading functions
+async showLoading(message:string =''):Promise<void>{
+  if(this.isLoading) return;
+  this.isLoading =true;
+  const options:LoadingOptions= {
+    message,
+    cssClass:'custom_loading',
+    showBackdrop:true,
+    translucent:true,
+    animated:true,
+    mode:'md'
   }
+  this.loading = await this.loadCtrl.create(options);
+  await this.loading.present();
+}
 
-  // ########################################################################
-  // ########################################################################
-  // Alert Functions
-  async deleteAlert(message?: string, header?: string) {
-    const alert = await this.alertCtrl.create({
-      header: header || 'confirm',
-      message: message || 'Are you Sure',
-      buttons: [
-        { text: 'لا', role: 'cancel' },
+// Dismiss loading function
+async dismissLoading():Promise<void>{
+    await this.loading?.dismiss();
+}
+
+
+  async presentToast(message: string,error:boolean=true) {
+    let toast = await this.toastCtrl.create({
+      header:error ? 'خطأ':'تم',
+      message,
+      mode:'md',
+      duration: 2500,
+      cssClass: error? 'error-toast':'toast-success',
+      position: 'top',
+      buttons:[
         {
-          text: 'نعم',
-          role: 'confirm',
+          icon:'close',
+          role:'cancel'
+        }
+      ]
+    });
+    await toast.present();
+  }
+  // Alert Functions
+  async confirmAlert(alertData:AlertOptions):Promise<boolean>{
+    const alert = await this.alertCtrl.create({
+      header:alertData?.header||'تـأكيد الحذف',
+      message:alertData?.message ||'هل أنت متأكد من الحذف؟',
+      mode:'ios',
+      buttons:[
+        {
+          text:'موافق',
+          role:'confirm'
         },
-      ],
-      cssClass:'alertStyle'
+        {
+          text:'إلغاء',
+          role:'cancel'
+        }
+      ]
     });
     await alert.present();
     const data = await alert.onDidDismiss();
-
-    data.role == 'confirm';
-    console.log(data.role);
-    return data.role == 'confirm';
+    return data.role=='confirm';
   }
-  // ########################################################################
-  // ########################################################################
-  // Loading Functions
-  async showLoading(message: string = ''): Promise<void> {
-    if (this.isLoading) {
-      return;
-    }
-    // this.isLoading = true;
-    const options: LoadingOptions = {
-      message,
-      cssClass: 'Loading-style',
-      showBackdrop: true,
-      translucent: true,
-      animated: true,
-      mode: 'ios',
-    };
-    this.loading = await this.loadCtrl.create(options);
-    await this.loading.present();
+  
+  // ####################################################################
+  //            KIMO
+  numberToString(value: string | number): string {
+    const number = this.stringToNumber(value)
+    const formattedValue = new Intl.NumberFormat().format(number);
+    return formattedValue || ""
   }
 
-  async dismissLoading() {
-    this.loading?.dismiss();
+  stringToNumber(value: string | number): number {
+    if (typeof value == 'number') return value;
+    return parseFloat(value?.replace(/,/g, '')) || 0;
   }
-  // ########################################################################
-  // ########################################################################
 
+  async initSettings(): Promise<void> {
+    
+    // this.settings = await this.storage.get("setting") || this.settings;
+  } 
   // ########################################################################
 }

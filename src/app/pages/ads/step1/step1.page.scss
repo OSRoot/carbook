@@ -2,8 +2,46 @@ ion-title {
     text-align: center;
     padding-left: 56px;
 }
+#modal-title{
+    margin: 0 !important;
+    padding:0 !important;
 
+}
 .container {
+
+    .images{
+        padding-inline: 20px;
+        margin-top: 12px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        // white-space: nowrap;
+        // overflow-x: scroll;
+        flex-direction: column;
+        // flex-wrap: wrap;
+        // scroll-behavior: smooth;
+        gap: 10px;
+        .image{ 
+            border-radius: 20px;
+        align-items: center;
+        background: var(--white-background);
+        box-shadow: 0 0 3px 1px var(--shadow);
+        justify-content: space-between;
+            width: 100%;
+            display: flex;
+            .img-num{
+                display: flex;
+                align-items: center;
+                img{
+                    width: 90px;
+                    // height: 100%;
+                    border-radius: 20px;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
 
     .selected-pics {
         // this class will apply when i have selected the pic

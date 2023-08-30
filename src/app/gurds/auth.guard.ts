@@ -40,7 +40,7 @@ export class AuthGuard implements CanLoad {
         url = current_navigation.extractedUrl.toString();
       }
 
-      this.funcService.ShowErrorToast('يجب التسجيل اولاً للإستمرار');
+      this.funcService.presentToast('يجب التسجيل اولاً للإستمرار');
       this.router.navigate(['/'], { queryParams: { backhome: url } });
       return false;
     }

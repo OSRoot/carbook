@@ -26,7 +26,7 @@ export class ProfilePage implements OnInit {
   }
   async clearData() {
     this.authService.logOut();
-    this.funcService.ShowSuccessToast('تم تسجيل الخروج بنجاح');
+    this.funcService.presentToast('تم تسجيل الخروج بنجاح');
     this.funcService.navigate('/welcome', 'forward');
   }
 

@@ -17,14 +17,17 @@ export class LoginPage implements OnInit {
     private funcService: FunctionsService,
     private storage: Storage,
     private authService: AuthService
-  ) {}
-
-  ngOnInit() {
+  ) {
     this.loginForm = new FormGroup({
       phone: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
     });
   }
+  // #######################################################
+
+  ngOnInit() {
+  }
+  // #######################################################
   async ionViewWillEnter() {
     this.user = await this.storage.get('user');
     if (this.user?._id) this.funcService.navigate('/tabs/home', 'back');
@@ -37,14 +40,10 @@ export class LoginPage implements OnInit {
     this.showPassword = !this.showPassword;
   }
   // ################# END ##################################
-  // #######################################################
-
-  // #######################################################
   navigate(page: string, dir: string, path?: string) {
     this.funcService.navigate(page, dir, path);
   }
   // #######################################################
-
   login(): any {
     if (this.loginForm.invalid) return false;
     this.authService.login(this.loginForm.value);

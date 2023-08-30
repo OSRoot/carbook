@@ -12,16 +12,14 @@ import { FunctionsService } from 'src/app/services/functions/functions.service';
 })
 export class Step3Page implements OnInit {
   progress = 1;
-  myAd: any;
-  myAds!: any;
-
+  myAd: any={};
+  myAds: any[]=[];
+  user:any={}
   constructor(
     private funcService: FunctionsService,
     private dataService: DataService,
-    private storage: Storage
   ) {}
   form!: FormGroup;
-  data!: Ad;
   price!: number;
   phoneNumber!: string;
   userId!: string;
@@ -31,22 +29,11 @@ export class Step3Page implements OnInit {
       phone: new FormControl(this.phoneNumber, Validators.required),
       price: new FormControl('', Validators.required),
     });
-    const phone = await this.storage.get('user').then((user) => {
-      this.userId = user._id;
-      this.userName = user.fullname;
-      return user.phone;
-    });
-    if (phone) {
-      this.phoneNumber = phone;
-    } else {
-      const acctoken = localStorage.getItem('accessToken');
-      const user = await this.storage.get('refreshToken');
-      if (!acctoken || user) {
-        localStorage.clear;
-        this.storage.clear();
-        this.navigate('/welcome', 'root');
-      }
-    }
+    console.log(this.dataService.getBody);
+    this.user = await this.dataService.getUser();
+    console.log(this.user);
+    
+    this.phoneNumber = this.user.phone
   }
 
   // #######################################################
@@ -54,34 +41,23 @@ export class Step3Page implements OnInit {
     this.funcService.navigate(page, dir, path);
   }
   // #######################################################
-
-  async prepareAdData() {}
-  // #######################################################
+  
   async postAd() {
-    await this.storage.get('myAd').then((ad) => {
-      const Myad = {
-        advertiserId: this.userId,
-        advertiserName: this.userName,
-        carType: ad.carType,
-        tyraz: ad.tyraz,
-        tarqeemType: ad.tarqeemType,
-        model: ad.model,
-        importType: ad.importType,
-        color: ad.color,
-        price: this.price,
-      };
-      this.myAd = Myad;
-    });
-    console.log(this.price);
-
-    console.log(this.myAd);
-
+    this.myAd = await this.dataService.getBody;
+    this.myAd['phoneNumber']=this.user.phone;
+    this.myAd['advertiserId']=this.user._id;
+    this.myAd['advertiserName']=this.user.fullname;
+    this.myAd.price = this.price
     this.dataService.postData('/ad/create', this.myAd).subscribe(
-      (res) => {
-        console.log(res);
+      async (_res) => {
+        console.log(_res);
+        await this.funcService.presentToast('تم نشر الإعلان بنجاح',false);
+        this.funcService.navigate('/tabs', 'root')
       },
-      (err) => {
-        console.log(err);
+      async (_err) => {
+        console.log(_err);
+        await this.funcService.presentToast('حدث خطأ، حاول مرة أخرى');
+        return;
       }
     );
     this.navigate('tabs/home', 'forward');
