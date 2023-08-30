@@ -34,15 +34,37 @@ ion-title {
                 display: flex;
                 align-items: center;
                 img{
-                    width: 90px;
-                    // height: 100%;
+                    padding-top: 5px;
+                    width: 100px;
+                    height: 90px;
                     border-radius: 20px;
                     object-fit: cover;
                 }
             }
         }
     }
-
+.img-icons{
+    margin-inline-end: 50px;
+    display: flex;
+    gap: 15px;
+    div{
+        border-radius: 50%;
+        padding: 10px;
+        height: 50px;
+        width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .delete-icon{
+        font-size: 20px;
+        background: rgba($color: red, $alpha: 7%);
+    }
+    .upload-icon{
+        font-size: 20px;
+        background: rgba($color: blue, $alpha: 7%);
+    }
+}
     .selected-pics {
         // this class will apply when i have selected the pic
     }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { DataService } from 'src/app/services/data/data.service';
 import { FunctionsService } from 'src/app/services/functions/functions.service';
 
 @Component({
@@ -9,25 +10,21 @@ import { FunctionsService } from 'src/app/services/functions/functions.service';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+  user:any={};
   constructor(
-    private storage: Storage,
+    private dataService:DataService,
     private funcService: FunctionsService,
     private authService: AuthService
   ) {}
 
   ngOnInit() {}
-  async ionViewWillEnter() {
-    await this.storage.get('refreshToken').then((token) => {
-      if (token) {
-        return;
-      }
-      this.funcService.navigate('/welcome', 'root');
-    });
+   ionViewWillEnter() {
+  this.user = this.dataService.getUser;
   }
+
   async clearData() {
     this.authService.logOut();
-    this.funcService.presentToast('تم تسجيل الخروج بنجاح');
-    this.funcService.navigate('/welcome', 'forward');
+    this.funcService.presentToast('تم تسجيل الخروج بنجاح',false);
   }
 
   // #############################################################

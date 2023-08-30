@@ -78,6 +78,7 @@ async dismissLoading():Promise<void>{
       header:alertData?.header||'تـأكيد الحذف',
       message:alertData?.message ||'هل أنت متأكد من الحذف؟',
       mode:'ios',
+      cssClass:'custom-alert',
       buttons:[
         {
           text:'موافق',

@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title class="ion-no-padding font-bold-16">إضافة إعلان</ion-title>
     <ion-buttons slot="start">
-      <ion-button (click)="navigate('/tabs/home', 'back');this.images=[]">
+      <ion-button (click)="navigate('/tabs/home', 'back')">
         <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -19,15 +19,16 @@
         <div class="image" *ngFor="let item of this.images">
           <div class="img-num">
             <div class="img">
-              <img [src]="item.path" alt="">
+              <img [src]="item.data" alt="">
             </div>
           </div>
           <div class="img-icons">
-            <ion-buttons slot="end">
-              <ion-button color="danger" fill="clear">
-                <ion-icon color="danger" name="trash"></ion-icon>
-              </ion-button>
-            </ion-buttons>
+            <div class="delete-icon" >
+              <ion-icon (click)="deleteImage(item)" color="danger" name="trash"></ion-icon>
+            </div>
+            <div class="upload-icon"  (click)="upload(item)">
+              <ion-icon color="primary" name="cloud-upload-outline"></ion-icon>
+            </div>
           </div>
         </div>
         <div class="icons"></div>
@@ -53,13 +54,13 @@
       </ion-toolbar>
       <ion-radio-group>
         <ion-list>
-          <ion-item (click)="selectPic() ; modalImage.dismiss()"  lines="none">
+          <ion-item (click)="selectPic(false) ; modalImage.dismiss()"  lines="none">
           <ion-label style="
           font-family: semiBold; color: var(--dark-text)" >اختر من المعرض</ion-label>
           <ion-icon name="image"></ion-icon>
           </ion-item>
           
-          <ion-item (click)="takePicture();modalImage.dismiss()" lines="none">
+          <ion-item (click)="selectPic(true);modalImage.dismiss()" lines="none">
             <ion-label style="font-family: semiBold; color: var(--dark-text)">التقاط صورة</ion-label>
             <ion-icon name="camera"></ion-icon>
             </ion-item>

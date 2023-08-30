@@ -10,13 +10,13 @@ export interface userObject {
 
 export interface Ad {
   _id?: string,
-  carType: string,
-  tyraz: string,
-  model: string,
-  tarqeemType: string,
-  color: string,
-  importType: string,
-  counter: number,
+  carType?: string,
+  tyraz?: string,
+  model?: string,
+  tarqeemType?: string,
+  color?: string,
+  importType?: string,
+  counter?: number,
   price?: number,
   advertiserName?: string,
   advertiserId?: string,
@@ -41,4 +41,9 @@ export enum Direction {
   'back',
   'forward',
   'root',
+}
+export interface navOptions{
+  page:string|'/',
+  direction:'root'|'back'|'forward',
+  any?:any
 }

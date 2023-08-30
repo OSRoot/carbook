@@ -109,6 +109,10 @@ const routes: Routes = [
       import('./pages/profile/profile.module').then((m) => m.ProfilePageModule),
     canLoad: [AuthGuard],
   },
+  {
+    path: 'map',
+    loadChildren: () => import('./tests/map/map.module').then( m => m.MapPageModule)
+  },
 ];
 
 @NgModule({

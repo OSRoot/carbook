@@ -57,7 +57,7 @@ export class AuthService {
   }
   // #####################################################################
   async login(body: any) {
-    await this.funcService.showLoading();
+    await this.funcService.showLoading('logging in...');
     this.dataService.postData('/user/login', body).subscribe(
       async (user: any) => {
         await this.saveCredentials(
@@ -70,6 +70,8 @@ export class AuthService {
       },
         (err) => {
           this.funcService.dismissLoading();
+          alert(err.error.error)
+          alert(err.error)
           if (err.status === 400 ||err.status === 401) {
           return  this.funcService.presentToast(
             'خطأ برقم الهاتف او كلمة المرور'
@@ -93,7 +95,7 @@ export class AuthService {
   }
   // #####################################################################
   async signup(form: any) {
-    await this.funcService.showLoading();
+    await this.funcService.showLoading('signing up...');
     this.dataService.postData('/user/register', form).subscribe(
       async (user: any) => {
         await this.saveCredentials(
@@ -101,7 +103,9 @@ export class AuthService {
           user[0].accessToken,
           user[0].refreshToken)
         this.funcService.dismissLoading();
-        this.dataService.setUser(user.theUser)
+        this.dataService.setUser(user[0].theUser)
+        // console.log();
+        
         this.navCtrl.navigateForward('/tabs/home');
       },
       async (err) => {

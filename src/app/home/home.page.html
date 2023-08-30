@@ -15,7 +15,7 @@
           <div>
             <ion-thumbnail >
               <ion-skeleton-text *ngIf="this.loading" animated style="border-radius: 50%;"></ion-skeleton-text>
-              <ion-img src="../../assets/images/mercedes.jpg"></ion-img>
+              <ion-img src="../../assets/images/person.png"></ion-img>
             </ion-thumbnail>
           </div>
           <div class="name" *ngIf="this.loading">
@@ -48,21 +48,12 @@
             </div>
             <div class="images-swiper" *ngIf="!this.loading">
               <swiper-container [pagination]="true" [zoom]="true" [slidesPerView]="1">
-                <swiper-slide>
+                <swiper-slide *ngFor="let img of item.media">
                   <div class="swiper-zoom-container">
-                    <img src="../../assets/images/mercedes.jpg" alt="">
+                    <img [src]="'http://192.168.1.7:3007/'+img" alt="">
                   </div>
                 </swiper-slide>
-                <swiper-slide>
-                  <div class="swiper-zoom-container">
-                    <img src="../../assets/images/mercedes.jpg" alt="">
-                  </div>
-                </swiper-slide>
-                <swiper-slide>
-                  <div class="swiper-zoom-container">
-                    <img src="../../assets/images/mercedes.jpg" alt="">
-                  </div>
-                </swiper-slide>
+          
               </swiper-container>
             </div>
           </div>

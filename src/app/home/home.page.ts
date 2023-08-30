@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FunctionsService } from '../services/functions/functions.service';
-import {  User } from '../interfaces/interfaces';
 import { DataService } from '../services/data/data.service';
 import { forkJoin } from 'rxjs';
 import { Storage } from '@ionic/storage-angular';
@@ -53,8 +52,12 @@ export class HomePage implements OnInit {
           this.ads = res[0];
           this.users=res[1];
           this.ads.length ? this.showContentView(ev) : this.showEmptyView(ev); 
+          console.log(this.ads);
+          
         },
       (_err)=>{
+        alert(_err.error);
+        alert([..._err])
           this.showErrorView(ev);
       }
     )

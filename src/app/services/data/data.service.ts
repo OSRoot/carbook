@@ -59,6 +59,4 @@ export class DataService {
   get api():string{
     return this.BASEAPI;
   }
-
-
 }

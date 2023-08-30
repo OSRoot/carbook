@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Storage } from '@ionic/storage-angular';
 import { Ad } from 'src/app/interfaces/interfaces';
+import { CameraService } from 'src/app/services/camera/camera.service';
 import { DataService } from 'src/app/services/data/data.service';
 import { FunctionsService } from 'src/app/services/functions/functions.service';
 
@@ -18,6 +19,7 @@ export class Step3Page implements OnInit {
   constructor(
     private funcService: FunctionsService,
     private dataService: DataService,
+    private cameraService:CameraService
   ) {}
   form!: FormGroup;
   price!: number;
@@ -47,6 +49,7 @@ export class Step3Page implements OnInit {
     this.myAd['phoneNumber']=this.user.phone;
     this.myAd['advertiserId']=this.user._id;
     this.myAd['advertiserName']=this.user.fullname;
+    this.myAd['media']=this.cameraService.imagesNames;
     this.myAd.price = this.price
     this.dataService.postData('/ad/create', this.myAd).subscribe(
       async (_res) => {
