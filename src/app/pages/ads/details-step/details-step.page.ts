@@ -29,7 +29,7 @@ export class DetailsStepPage implements OnInit {
   ngOnInit() {}
 
   async ionViewWillEnter() {
-    
+    // You can make it as a form and patch data or reset it faster
   }
   // Basic Functions to set values from user
   navigate(page: string, dir: string, path?: string) {
@@ -71,18 +71,18 @@ export class DetailsStepPage implements OnInit {
       this.funcService.presentToast('يجب ملء جميع البيانات للاستمرار');
       return;
     }
-    const myAd: Ad = {
-      carType: this.carType,
-      tyraz: this.carTyraz,
-      color: this.carColor,
-      importType: this.carImportType,
-      model: this.carModel,
-      counter: this.carCounter,
-      tarqeemType: this.carTarqueem,
-      advertiserId: this.advertiserId,
-      advertiserName: this.advertiserName,
-    };
-    this.dataService.setBody=myAd;
+    // const myAd: Ad = {
+    //   carType: this.carType,
+    //   tyraz: this.carTyraz,
+    //   color: this.carColor,
+    //   importType: this.carImportType,
+    //   model: this.carModel,
+    //   counter: this.carCounter,
+    //   tarqeemType: this.carTarqueem,
+    //   advertiserId: this.advertiserId,
+    //   advertiserName: this.advertiserName,
+    // };
+    // this.dataService.setBody=myAd;
     this.navigate('/step3', 'forward');
   }
 }

@@ -18,8 +18,9 @@ export class ProfilePage implements OnInit {
   ) {}
 
   ngOnInit() {}
-   ionViewWillEnter() {
-  this.user = this.dataService.getUser;
+   async ionViewWillEnter() {
+    this.user = await this.dataService.getUser();
+    // console.log(this.user);
   }
 
   async clearData() {

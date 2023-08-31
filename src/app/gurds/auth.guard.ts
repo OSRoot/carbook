@@ -8,14 +8,6 @@ import { FunctionsService } from '../services/functions/functions.service';
 })
 export class AuthGuard implements CanLoad {
   constructor(private router: Router, private funcService: FunctionsService) {
-    // setInterval((isAuth: boolean) => {
-    //   if (isAuth) {
-    //     return
-    //   }
-    //   else {
-    //     this.router.navigate(['/home'], { queryParams: { url: 0 } })
-    //   }
-    // })
   }
 
   canLoad(

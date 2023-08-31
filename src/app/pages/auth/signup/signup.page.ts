@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FunctionsService } from 'src/app/services/functions/functions.service';
-import { User } from 'src/app/interfaces/interfaces';
+// import { User } from 'src/app/interfaces/interfaces';
 import { DataService } from 'src/app/services/data/data.service';
 import { Storage } from '@ionic/storage-angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -21,7 +21,7 @@ export class SignupPage implements OnInit {
   confirmPassword!: string;
   passwordsMatch: boolean = true;
   // #################### START ############################
-  user!: any;
+  user: any={};
   constructor(
     private funcService: FunctionsService,
     private dataService:DataService,
@@ -40,7 +40,7 @@ export class SignupPage implements OnInit {
   }
   // #######################################################
   async ionViewWillEnter() {
-    this.user = await this.storage.get('user');
+    this.user = await this.dataService.getUser();
     if (this.user?._id) this.funcService.navigate('/tabs/home', 'back');
   }
   // ########## handle the password visibilty ###############

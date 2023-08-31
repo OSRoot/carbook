@@ -1,13 +1,18 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>map</ion-title>
+    <ion-title class="ion-text-center font-semibold-16">Map</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">map</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="container">
+    <div #map class="map-container">
+      <ion-fab class="ion-padding-start" vertical="bottom" slot="fixed" horizontal="right">
+        <ion-fab-button color="primary">
+          <ion-icon name="navigate-outline"></ion-icon>
+          <ion-ripple-effect></ion-ripple-effect>
+      </ion-fab-button>
+      </ion-fab>
+    </div>
+  </div>
 </ion-content>

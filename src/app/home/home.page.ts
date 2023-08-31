@@ -14,7 +14,6 @@ export class HomePage implements OnInit {
   user: any = {};
   loading:boolean=true;
   loadingAds:boolean=true;
-
   errorView:boolean=false;
   emptyView:boolean=false;
   stopLoading:boolean=false;
@@ -38,9 +37,9 @@ export class HomePage implements OnInit {
   }
   // #############################################################
   // #############################################################
-  getData(ev:any){
+  // getData(ev:any){
 
-  }
+  // }
   
   // #############################################################
   getAds(ev?:any){

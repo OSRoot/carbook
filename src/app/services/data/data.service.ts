@@ -8,6 +8,7 @@ import { Observable, take } from 'rxjs';
 })
 export class DataService {
   private user:any={};
+  private params :any ={};
   private BASEAPI = 'http://192.168.1.7:3007';
   private body:any ={};
   constructor(
@@ -15,13 +16,6 @@ export class DataService {
     private storage:Storage
     ) {}
 
-  set params(body:any){
-    this.body = body;
-  }
-
-  get params():any{
-    return this.body;
-  }
 
   set setBody(body:any){
     this.body=body
@@ -30,7 +24,14 @@ export class DataService {
   get getBody():any{
     return this.body;
   }
-
+  setParams(body:any){
+    this.params = body;
+  }
+  
+  get Params():any{
+    return this.params;
+  }
+  
   async setUser(user:any){
     this.user = user
     await this.storage.set('user',user);

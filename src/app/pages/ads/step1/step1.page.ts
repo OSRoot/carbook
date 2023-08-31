@@ -18,10 +18,12 @@ export class Step1Page implements OnInit {
     private cameraService: CameraService,
     private dataService:DataService
   ) {}
-
+  // ###########################################################
   async ngOnInit() {
   }
+  // ###########################################################
   async ionViewWillEnter(){
+    this.resetImages()
     await this.funcService.showLoading('loading...')
     this.user = await this.dataService.getUser();
     if(!this.user){
@@ -34,32 +36,48 @@ export class Step1Page implements OnInit {
       return;
     }
   }
+  // ###########################################################
+  
   navigate(page: string, dir: string, path?: string) {
     this.funcService.navigate(page, dir, path);
     
   }
+  // ###########################################################
 
   deleteImage(ev?:any){
     this.cameraService.deleteImage(ev)
     this.images = this.cameraService.images;
   }
+  // ###########################################################
+
   upload(ev?:any){
     this.cameraService.uploadeOneFile(ev);
-    // this.deleteImage(ev);
+    this.deleteImage(ev);
   }
+  // ###########################################################
+
   // Select ppic Picture should be Uploaded while user selecting another picture and call the image url too
   async selectPic(ev:boolean) {
     await this.cameraService.selectImage(ev);
-    this.images = await this.cameraService.images
-    console.log(this.images);
-    
+    this.images = await this.cameraService.images;
   }
+  // ###########################################################
+
+   uploadAll(){
+    
+    // this.cameraService.UploadAllImages()
+  }
+  // ###########################################################
 
   removeImage(ev:any){
     this.cameraService.deleteImage(ev)
   }
+  // ###########################################################
   
   resetImages(){
-    this.cameraService.images = null
+    this.cameraService.images = null;
+    this.cameraService.photos =[];
+    this.cameraService.imagesNames = null
+    this.images=this.cameraService.photos;
   }
 }

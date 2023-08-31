@@ -27,7 +27,7 @@
           </div>
         </ion-item>
         <div class="ad-container">
-          <div class="st-part">
+          <div class="st-part" (click)="navigate('/ad-detail','forward',item._id)">
             <div class="title-price" *ngIf="this.loading">
               <ion-skeleton-text animated style="width: 100px; height: 20px;"></ion-skeleton-text>
               <ion-skeleton-text animated style="width: 70px; height: 15px;"></ion-skeleton-text>

@@ -45,8 +45,11 @@ export class CameraService implements OnInit {
   get images(){
     return this.photos
   }
-  get imagesNames():string[]{
+  get imagesNames():any[]{
     return this.imageNames;
+  }
+  set imagesNames(body:any){
+    this.imageNames = body;
   }
   // #########################################################
 
@@ -196,12 +199,21 @@ async createFormData(image:any) {
   formData.append('file', blob, image.name)
   return formData
 }
+  // #########################################################
 
 
 deleteImage(image:any) {
   this.photos = this.photos.filter((img:any) => img.name != image.name)
 }
+  // #########################################################
 
+  // async UploadAllImages(){
+  //   for (let photo of this.photos){
+  //     const path = await this.uploadeOneFile(photo);
+  //     if(path!=null) this.imagesNames.push();
+  //   }
+  // }
+  // #########################################################
 
 }
 

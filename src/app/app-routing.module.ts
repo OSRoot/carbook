@@ -40,12 +40,6 @@ const routes: Routes = [
     canLoad: [AuthGuard],
   },
   {
-    path: 'step2',
-    loadChildren: () =>
-      import('./pages/ads/step2/step2.module').then((m) => m.Step2PageModule),
-    canLoad: [AuthGuard],
-  },
-  {
     path: 'details-step',
     loadChildren: () =>
       import('./pages/ads/details-step/details-step.module').then(

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 
@@ -8,6 +9,8 @@ import { Storage } from '@ionic/storage-angular';
   styleUrls: ['./tabs.page.scss'],
 })
 export class TabsPage implements OnInit {
+      // You can use the get current navigation to activate the tab and the segment too
+  // const current_navigation = this.router.getCurrentNavigation();
   user:any={}
   homeDarkActive = 0;
   homeLightActive = 1;
@@ -17,12 +20,19 @@ export class TabsPage implements OnInit {
   wishesLightActive = 1;
   exposDarkActive = 0;
   exposLightActive = 1;
+  currentUrl=''
+  currentValue=''
   constructor(
     private navCtrl: NavController,
-    private storage:Storage
+    private storage:Storage,
+    // private router:Router
     ) {}
   // currentActiveTabValue!: string;
+
   ngOnInit() {
+    // @ts-ignore
+    // this.currentUrl=this.router.getCurrentNavigation()?.extractedUrl.toString() || 'home';
+    // this.currentValue= this.currentUrl.substring(6) || 'home'
     this.navCtrl.navigateForward('/tabs/home');
     this.homeDarkActive = 1;
     this.homeLightActive = 0;
@@ -34,10 +44,14 @@ export class TabsPage implements OnInit {
 
   async ionViewWillEnter() {
     if (!this.user._id) await this.storage.get('user');
+    else{
+      return
+    }
   }
 
 
   activateTab(tab: string) {
+    // This reminds me of using Swith statement
     if (tab === 'home') {
       this.homeDarkActive = 1;
       this.homeLightActive = 0;

@@ -10,9 +10,14 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-button (click)="clearData()"><ion-label>LogOut</ion-label>
-      <ion-icon name="log-out-outline"></ion-icon>
-    </ion-button>
-  </ion-item>
+  <div class="container">
+    <ion-item>
+      <ion-text>Welcome Mr {{this.user.fullname}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-button (click)="clearData()"><ion-label>LogOut</ion-label>
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </div>
 </ion-content>

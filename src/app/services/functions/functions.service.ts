@@ -14,7 +14,7 @@ export class FunctionsService {
     private alertCtrl: AlertController,
     private loadCtrl: LoadingController
   ) {}
-
+// #######################################################
   navigate(page: string, dir: string, path?: string) {
     if (dir === 'back') {
       this.navCtrl.navigateBack(page);
@@ -31,6 +31,7 @@ export class FunctionsService {
       return;
     }
   }
+// #######################################################
 
 
 // Show Loading functions
@@ -48,11 +49,13 @@ async showLoading(message:string =''):Promise<void>{
   this.loading = await this.loadCtrl.create(options);
   await this.loading.present();
 }
+// #######################################################
 
 // Dismiss loading function
 async dismissLoading():Promise<void>{
     await this.loading?.dismiss();
 }
+// #######################################################
 
 
   async presentToast(message: string,error:boolean=true) {
@@ -72,6 +75,8 @@ async dismissLoading():Promise<void>{
     });
     await toast.present();
   }
+// #######################################################
+
   // Alert Functions
   async confirmAlert(alertData:AlertOptions):Promise<boolean>{
     const alert = await this.alertCtrl.create({
@@ -102,11 +107,13 @@ async dismissLoading():Promise<void>{
     const formattedValue = new Intl.NumberFormat().format(number);
     return formattedValue || ""
   }
+// #######################################################
 
   stringToNumber(value: string | number): number {
     if (typeof value == 'number') return value;
     return parseFloat(value?.replace(/,/g, '')) || 0;
   }
+// #######################################################
 
   async initSettings(): Promise<void> {
     

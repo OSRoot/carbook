@@ -42,12 +42,16 @@ export class MyAdsPage implements OnInit {
     this.funcService.confirmAlert({header:'تأكيد',message:'هل أنت متأكد من الحذف؟'})
     .then(async (res) => {
       if (res === true) {
+        this.funcService.showLoading('حذف')
         this.dataService.deleteData('/ad/' + id).subscribe(
           async (res) => {
             console.log(res);
             await this.getMyAds();
+            await this.funcService.presentToast('تم الحذف', false)
+            this.funcService.dismissLoading()
           },
           (err) => {
+            this.funcService.dismissLoading()
             console.log(err);
             return
           }
